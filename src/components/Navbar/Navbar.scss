@@ -1,0 +1,30 @@
+.navbar-container {
+  display: grid;
+  width: 100vw;
+  height: 90px;
+  grid-template-columns: 30vw 40vw 30vw;
+  background-color: #181818;
+
+  .ui.button.home-button {
+    background-color: transparent;
+    color: #f8f8f8;
+    font-size: 2.5em;
+    justify-self: start;
+  }
+
+  .ui.buttons.nav-group-buttons {
+    justify-content: center;
+    align-items: center;
+    .ui.button.nav-button {
+      background-color: transparent;
+      color: #f8f8f8;
+      height: 3rem;
+    }
+  }
+
+  .ui.button.search-button {
+    background-color: transparent;
+    color: #f8f8f8;
+    justify-self: end;
+  }
+}

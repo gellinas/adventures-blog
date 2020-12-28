@@ -1,16 +1,16 @@
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 
-import "./Home.scss";
+import "./About.scss";
 
-function Home(props) {
+function About(props) {
   return (
-    <div className="home-container">
+    <div className="about-container">
       <Navbar {...props} />
-      <div className="home-content">Home</div>
+      <div className="about-content">About</div>
       <Footer />
     </div>
   );
 }
 
-export default Home;
+export default About;
