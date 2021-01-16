@@ -10,8 +10,6 @@ import dummyData from "../data/dummy-adventures.json";
 import "./Home.scss";
 
 function Home(props) {
-  console.log(dummyData);
-
   const [latestPost, ...posts] = dummyData;
 
   return (
