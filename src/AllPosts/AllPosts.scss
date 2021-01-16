@@ -3,9 +3,37 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  width: 100vw;
 
   .all-posts-content {
     align-content: center;
     flex: 1 0 auto;
+
+    .categories-section {
+      width: 100vw;
+      padding: 0 7em 0 7em;
+    }
+
+    .adventures-section {
+      width: 100vw;
+      padding: 0 7em 0 7em;
+
+      .blog-post-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+      }
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 0.5em 0 0.5em 0;
+    }
+  }
+
+  .ui.secondary.pointing.menu {
+    margin: 1em;
+    border-bottom: none;
   }
 }

@@ -1,5 +1,15 @@
-div, h1, h2, h3, h4, h5, h6, p, span, button, input {
-  font-family: 'Roboto', sans-serif !important;
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+button,
+input {
+  font-family: "Roboto", sans-serif !important;
 }
 
 #app {
@@ -7,5 +17,4 @@ div, h1, h2, h3, h4, h5, h6, p, span, button, input {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }

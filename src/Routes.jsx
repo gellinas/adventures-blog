@@ -4,6 +4,7 @@ import Home from "./Home/Home.jsx";
 import AllPosts from "./AllPosts/AllPosts.jsx";
 import Photography from "./Photography/Photography.jsx";
 import About from "./About/About.jsx";
+import SinglePost from "./SinglePost/SinglePost.jsx";
 
 function Routes(props) {
   return (
@@ -13,6 +14,7 @@ function Routes(props) {
         <Route path="/adventures" component={AllPosts} />
         <Route path="/photography" component={Photography} />
         <Route path="/aboutus" component={About} />
+        <Route path="/post" component={SinglePost} />
       </Switch>
     </Router>
   );

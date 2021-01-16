@@ -1,0 +1,51 @@
+.blog-post-card {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1em 1em;
+
+  .ui.card {
+    width: 25vw;
+    box-shadow: none;
+    .header {
+      cursor: pointer;
+      margin-bottom: 0.15em;
+    }
+
+    .content {
+      padding: 0.75em 0.25em;
+    }
+
+    .extra {
+      display: flex;
+      flex-flow: row wrap;
+      padding: 0.25em 0.25em;
+    }
+
+    .read-more {
+      cursor: pointer;
+      margin-top: 0.5em;
+
+      &:hover {
+        color: #4183c4;
+      }
+    }
+
+    .blog-post-card-img-holder {
+      height: 30vh;
+      overflow: hidden;
+      cursor: pointer;
+
+      .blog-post-card-img {
+        min-height: 30vh;
+      }
+    }
+    .ui.card.content.blog-post-card-content-holder {
+      width: 25vw;
+      height: 50vh;
+    }
+
+    .tag-link {
+      padding: 0.25em;
+    }
+  }
+}

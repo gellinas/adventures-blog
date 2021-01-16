@@ -5,7 +5,43 @@
   min-height: 100vh;
 
   .home-content {
-    align-content: center;
+    display: flex;
+    flex-direction: column;
     flex: 1 0 auto;
+    width: 100vw;
+
+    .recent-adventures-section {
+      width: 100vw;
+      padding: 0 7em 0 7em;
+    }
+
+    .photo-archive-section {
+      width: 100vw;
+      padding: 0 7em 0 7em;
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 0.5em 0 0.5em 0;
+    }
+
+    .see-more {
+      display: flex;
+      min-width: 100vw;
+      margin: 1em;
+      justify-content: center;
+
+      .see-more-button {
+        background-color: #0b090a;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .blog-post-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
   }
 }
