@@ -2,29 +2,33 @@
   display: grid;
   width: 100vw;
   height: 90px;
-  grid-template-columns: 30vw 40vw 30vw;
-  background-color: #181818;
+  grid-template-columns: 25vw 50vw 25vw;
+  background-color: #ffffff;
 
   .ui.button.home-button {
     background-color: transparent;
-    color: #f8f8f8;
-    font-size: 2.5em;
+    color: #0b090a;
+    font-size: 2.75em;
     justify-self: start;
+    padding-left: 1.5rem;
+    align-items: center;
   }
 
   .ui.buttons.nav-group-buttons {
     justify-content: center;
     align-items: center;
+
     .ui.button.nav-button {
       background-color: transparent;
-      color: #f8f8f8;
+      color: #0b090a;
       height: 3rem;
+      font-size: 1.45rem;
     }
   }
 
   .ui.button.search-button {
     background-color: transparent;
-    color: #f8f8f8;
+    color: #0b090a;
     justify-self: end;
   }
 }

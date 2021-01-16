@@ -6,7 +6,7 @@ function Navbar(props) {
   return (
     <div className="navbar-container">
       <Button className="home-button" onClick={() => props.history.push("/")}>
-        OurBlog
+        DxD
       </Button>
       <Button.Group className="nav-group-buttons">
         <Button
