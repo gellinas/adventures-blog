@@ -1,6 +1,7 @@
 .featured-blog-post-card-container {
   display: flex;
   margin: 0.75em 0;
+  transition: transform 0.2s;
 
   .ui.image {
     width: 45vw;
@@ -50,4 +51,9 @@
       }
     }
   }
+}
+
+.featured-blog-post-card-container:hover .ui.image {
+  transform: scale(1.02);
+  z-index: 1;
 }

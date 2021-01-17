@@ -44,4 +44,13 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
   }
+
+  .photo-images-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    .single-image-container {
+      margin: 0.5em;
+    }
+  }
 }
