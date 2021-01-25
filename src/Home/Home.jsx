@@ -3,10 +3,13 @@ import Footer from "../components/Footer/Footer.jsx";
 import HeroHeader from "./components/HeroHeader.jsx";
 import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlogPostCard.jsx";
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
+import PhotographyImage from "../components/PhotographyImage/PhotographyImage.jsx";
 
 import { Button } from "semantic-ui-react";
 
 import dummyData from "../data/dummy-adventures.json";
+import dummyPhotos from "../data/dummy-photos.json";
+
 import "./Home.scss";
 
 function Home(props) {
@@ -40,7 +43,23 @@ function Home(props) {
         </div>
 
         <div className="photo-archive-section">
-          <div className="section-title">Photography Archive</div>
+          <div className="section-title">Recent Photography</div>
+          <div className="photo-images-container">
+            {dummyPhotos.map((item, index) => {
+              if (index <= 3) {
+                return (
+                  <div key={index}>
+                    <PhotographyImage
+                      photoData={item}
+                      index={index}
+                      {...props}
+                      size="big"
+                    />
+                  </div>
+                );
+              }
+            })}
+          </div>
         </div>
         <div className="see-more">
           <Button

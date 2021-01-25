@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: row wrap;
   margin: 1em 1em;
+  transition: transform 0.2s;
 
   .ui.card {
     width: 25vw;
@@ -48,4 +49,8 @@
       padding: 0.25em;
     }
   }
+}
+
+.blog-post-card:hover .blog-post-card-img-holder {
+  transform: scale(1.05);
 }

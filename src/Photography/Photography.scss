@@ -5,7 +5,24 @@
   min-height: 100vh;
 
   .photography-content {
-    align-content: center;
     flex: 1 0 auto;
+    width: 100vw;
+    padding: 0 7em 0 7em;
+
+    .photography-header {
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 0.75em 0.5em 0.75em 0;
+    }
+
+    .photo-images-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+
+      .single-image-container {
+        margin: 0.75em;
+      }
+    }
   }
 }
