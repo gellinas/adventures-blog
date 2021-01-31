@@ -44,7 +44,6 @@ function Carousel(props) {
   };
 
   return (
-    //make icon change to name=circle if in view
     <div className="carousel-wrapper">
       <div className="category-slider">
         <Button icon="angle left" onClick={onBackwardClick} />
