@@ -1,6 +1,16 @@
 [
     {
         "id": 8,
+        "categories": [
+            "Travel",
+            "Activities",
+            "Asia",
+            "Europe",
+            "North America",
+            "Adventures Close to Home",
+            "Film",
+            "Food"
+        ],
         "main_image": "https://adventures-archive.s3.amazonaws.com/CB43046A-8A7E-400A-8E46-AB8759F8F197.JPG",
         "title": "Kyoto - Part 1",
         "sub_title": "explored the streets of Kyoto",
@@ -32,18 +42,19 @@
             "Kyoto",
             "Japan",
             "subway"
-        ],
-        "categories": [
-            "Travel",
-            "Film",
-            "Activities",
-            "Japan",
-            "South Korea",
-            "Adventures Close to Home"
         ]
     },
     {
         "id": 9,
+        "categories": [
+            "Travel",
+            "Activities",
+            "Asia",
+            "Europe",
+            "North America",
+            "Adventures Close to Home",
+            "Film"
+        ],
         "main_image": "https://adventures-archive.s3.amazonaws.com/CB43046A-8A7E-400A-8E46-AB8759F8F197.JPG",
         "title": "Adventures in Seoul - Part 1",
         "sub_title": "portra 400",
@@ -75,11 +86,19 @@
             "Seoul",
             "Hike",
             "Seoul Tower"
-        ],
-        "categories": []
+        ]
     },
     {
         "id": 10,
+        "categories": [
+            "Travel",
+            "Activities",
+            "Asia",
+            "Europe",
+            "North America",
+            "Adventures Close to Home",
+            "Film"
+        ],
         "main_image": "https://adventures-archive.s3.amazonaws.com/CB43046A-8A7E-400A-8E46-AB8759F8F197.JPG",
         "title": "Kyoto - Part 2",
         "sub_title": "portra 400",
@@ -111,11 +130,19 @@
             "kyoto",
             "japan",
             "subway"
-        ],
-        "categories": []
+        ]
     },
     {
         "id": 11,
+        "categories": [
+            "Travel",
+            "Activities",
+            "Asia",
+            "Europe",
+            "North America",
+            "Adventures Close to Home",
+            "Film"
+        ],
         "main_image": "https://adventures-archive.s3.amazonaws.com/CB43046A-8A7E-400A-8E46-AB8759F8F197.JPG",
         "title": "Kyoto - Part 3",
         "sub_title": "explored the streets of Kyoto",
@@ -147,8 +174,7 @@
             "Kyoto",
             "Japan",
             "subway"
-        ],
-        "categories": []
+        ]
     }
 
 ]

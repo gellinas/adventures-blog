@@ -46,14 +46,18 @@ function SinglePost(props) {
         <div>
           {blogPostData.body.map((item, index) => {
             return (
-              <div className="post-body-container">
+              <div className="post-body-container" key={index}>
                 <div className="post-text-container">
                   <div className="body-title">{item.body_title}</div>
                   <div className="body-text">{item.body}</div>
                 </div>
                 <div className="post-image-container">
                   {item.images.map((image, index) => {
-                    return <img src={image.src} className="post-image" />;
+                    return (
+                      <div key={index}>
+                        <img src={image.src} className="post-image" />
+                      </div>
+                    );
                   })}
                 </div>
               </div>
