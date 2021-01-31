@@ -2,10 +2,12 @@ import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlogPostCard.jsx";
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
+import Carousel from "./components/Carousel/Carousel.jsx";
 
 import { Pagination, Icon } from "semantic-ui-react";
 
 import dummyData from "../data/dummy-adventures.json";
+
 import "./AllPosts.scss";
 
 function AllPosts(props) {
@@ -17,6 +19,7 @@ function AllPosts(props) {
       <div className="all-posts-content">
         <div className="categories-section">
           <div className="section-title">Categories</div>
+          <Carousel {...props} />
         </div>
 
         <div className="adventures-section">
