@@ -1,4 +1,4 @@
-import { Button, Search, Icon } from "semantic-ui-react";
+import { Button, Icon, Input } from "semantic-ui-react";
 
 import "./Navbar.scss";
 
@@ -28,9 +28,16 @@ function Navbar(props) {
           About Us
         </Button>
       </Button.Group>
-      <Button className="search-button">
-        <Icon name="search" />
-      </Button>
+      <Input
+        icon={
+          <Icon
+            name="search"
+            link
+            onClick={() => props.history.push("/search")}
+          />
+        }
+        placeholder="Search..."
+      />
     </div>
   );
 }

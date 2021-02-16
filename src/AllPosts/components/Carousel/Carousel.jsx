@@ -43,6 +43,10 @@ function Carousel(props) {
     setCategoriesInView(4);
   };
 
+  const onCategoryClick = () => {
+    props.history.push("search");
+  };
+
   return (
     <div className="carousel-wrapper">
       <div className="category-slider">
@@ -51,7 +55,15 @@ function Carousel(props) {
           {dummyCategories.map((category, index) => {
             if (index >= categoriesInView && index < categoriesInView + 4) {
               return (
-                <div className="category-container" key={index}>
+                <div
+                  className="category-container"
+                  key={index}
+                  onClick={() =>
+                    props.history.push("/search", {
+                      carouselCategory: category.label,
+                    })
+                  }
+                >
                   <Image src={category.image} size="tiny" />
                   <div className="image-overlay">
                     <div className="image-text">

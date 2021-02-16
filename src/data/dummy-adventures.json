@@ -4,17 +4,13 @@
         "categories": [
             "Travel",
             "Activities",
-            "Asia",
-            "Europe",
-            "North America",
-            "Adventures Close to Home",
-            "Film",
-            "Food"
+            "Asia"
         ],
         "main_image": "https://adventures-archive.s3.amazonaws.com/CB43046A-8A7E-400A-8E46-AB8759F8F197.JPG",
         "title": "Kyoto - Part 1",
         "sub_title": "explored the streets of Kyoto",
         "date": "2018-10-05T18:54:47Z",
+        "date_posted":  "2020-10-05T18:54:47Z",
         "summary": "adventuring around Kyoto - found an amazing ramen and a new favorite city",
         "body": [
             {
@@ -46,19 +42,17 @@
     },
     {
         "id": 9,
-        "categories": [
-            "Travel",
-            "Activities",
+        "categories": [           
             "Asia",
             "Europe",
             "North America",
-            "Adventures Close to Home",
             "Film"
         ],
         "main_image": "https://adventures-archive.s3.amazonaws.com/CB43046A-8A7E-400A-8E46-AB8759F8F197.JPG",
         "title": "Adventures in Seoul - Part 1",
         "sub_title": "portra 400",
         "date": "2019-10-06T18:54:47Z",
+        "date_posted":  "2020-10-06T18:54:47Z",
         "summary": "adventuring around Seoul - took a walk to Seoul tower",
         "body": [
             {
@@ -103,6 +97,7 @@
         "title": "Kyoto - Part 2",
         "sub_title": "portra 400",
         "date": "2018-10-05T18:54:47Z",
+        "date_posted":  "2020-10-07T18:54:47Z",
         "summary": "adventuring around Kyoto - walked all the steps and miles",
         "body": [
             {
@@ -138,8 +133,6 @@
             "Travel",
             "Activities",
             "Asia",
-            "Europe",
-            "North America",
             "Adventures Close to Home",
             "Film"
         ],
@@ -147,6 +140,7 @@
         "title": "Kyoto - Part 3",
         "sub_title": "explored the streets of Kyoto",
         "date": "2018-10-05T18:54:47Z",
+        "date_posted":  "2020-10-10T18:54:47Z",
         "summary": "adventuring around Kyoto - bamboo forest and tori gates",
         "body": [
             {
