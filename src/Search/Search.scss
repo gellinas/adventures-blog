@@ -15,6 +15,36 @@
       padding: 1em 4em 1em 4em;
     }
 
+    .filters-applied-container {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      padding: 0.5em 7em 0em 7em;
+
+      .filters-applied {
+        display: flex;
+        flex-flow: row wrap;
+
+        .applied-filter-label {
+          font-size: 1.15em;
+          margin: 1em 1em 0em 0em;
+
+          .close-icon {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .clear-filters {
+        display: flex;
+        margin-top: 1em;
+        font-size: 1.15em;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
     .search-menu {
       display: flex;
       padding: 1em 4em 1em 4em;

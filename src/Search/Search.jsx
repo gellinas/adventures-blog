@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { get } from "lodash";
+import { get, isEmpty } from "lodash";
 import { Dropdown, Icon } from "semantic-ui-react";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
@@ -19,6 +19,11 @@ function Search(props) {
     false
   );
   const [isTagsFilterActive, setIsTagsFilterActive] = useState(false);
+  const [categoriesChecked, setCategoriesChecked] = useState([]);
+  const [tagsChecked, setTagsChecked] = useState([]);
+  const [clearFiltersVisible, setClearFiltersVisible] = useState(false);
+  const [applyFiltersVisible, setApplyFiltersVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (get(props.location.state, "carouselCategory", undefined)) {
@@ -29,7 +34,31 @@ function Search(props) {
       );
       setSearchResult(filterByCategory);
     }
-  }, [get(props.location.state, "carouselCategory", undefined)]);
+    if (get(props.location.state, "blogPostCardTag", undefined)) {
+      const filterByTagClick = dummyData.filter((blogPostData, index) =>
+        blogPostData.tags.includes(
+          get(props.location.state, "blogPostCardTag", undefined)
+        )
+      );
+      setSearchResult(filterByTagClick);
+    }
+    if (get(props.location.state, "navbarQuery", undefined)) {
+      setSearchQuery(props.location.state.navbarQuery);
+    }
+  }, [
+    get(props.location.state, "carouselCategory", undefined),
+    get(props.location.state, "blogPostCardTag", undefined),
+    get(props.location.state, "navbarQuery", undefined),
+  ]);
+
+  useEffect(() => {
+    if (!isEmpty(tagsChecked) || !isEmpty(categoriesChecked)) {
+      setClearFiltersVisible(true);
+    }
+    if (isEmpty(tagsChecked) && isEmpty(categoriesChecked)) {
+      setClearFiltersVisible(false);
+    }
+  }, [tagsChecked, categoriesChecked]);
 
   const options = [
     {
@@ -59,6 +88,13 @@ function Search(props) {
           setFilterCategoryIcon={setFilterCategoryIcon}
           filterTagIcon={filterTagIcon}
           setFilterTagIcon={setFilterTagIcon}
+          categoriesChecked={categoriesChecked}
+          setCategoriesChecked={setCategoriesChecked}
+          tagsChecked={tagsChecked}
+          setTagsChecked={setTagsChecked}
+          clearFiltersVisible={clearFiltersVisible}
+          setClearFiltersVisible={setClearFiltersVisible}
+          onApplyFiltersClick={onApplyFiltersClick}
         />
       );
     }
@@ -78,11 +114,93 @@ function Search(props) {
     setFilterTagIcon("chevron up");
   };
 
+  const onApplyFiltersClick = () => {
+    if (clearFiltersVisible) {
+      setIsCategoriesFilterActive(false);
+      setFilterCategoryIcon("chevron down");
+      setIsTagsFilterActive(false);
+      setFilterTagIcon("chevron down");
+      setApplyFiltersVisible(true);
+    }
+  };
+
+  const removeSingleCategoryFilter = (category) => {
+    const removeFromCategoriesChecked = categoriesChecked.filter(
+      (value) => value !== category
+    );
+    setCategoriesChecked(removeFromCategoriesChecked);
+  };
+
+  const removeSingleTagFilter = (tag) => {
+    const removeFromTagsChecked = tagsChecked.filter((value) => value !== tag);
+    setTagsChecked(removeFromTagsChecked);
+  };
+
+  const applyFilters = () => {
+    if (applyFiltersVisible) {
+      return (
+        <div className="filters-applied-container">
+          <div className="filters-applied">
+            {!isEmpty(categoriesChecked) &&
+              categoriesChecked.map((category, index) => {
+                return (
+                  <div className="applied-filter-label" key={index}>
+                    {category}
+                    <Icon
+                      className="close-icon"
+                      name="x"
+                      onClick={() => removeSingleCategoryFilter(category)}
+                    />
+                  </div>
+                );
+              })}
+            {!isEmpty(tagsChecked) &&
+              tagsChecked.map((tag, index) => {
+                return (
+                  <div className="applied-filter-label" key={index}>
+                    {tag}{" "}
+                    <Icon
+                      className="close-icon"
+                      name="x"
+                      onClick={() => removeSingleTagFilter(tag)}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+          {clearFilters()}
+        </div>
+      );
+    }
+  };
+
+  const onClearFiltersClick = () => {
+    setTagsChecked([]);
+    setCategoriesChecked([]);
+    setClearFiltersVisible(false);
+    setApplyFiltersVisible(false);
+  };
+
+  const clearFilters = () => {
+    if (clearFiltersVisible) {
+      return (
+        <div className="clear-filters" onClick={onClearFiltersClick}>
+          Clear All Filters
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="search-container">
-      <Navbar {...props} />
+      <Navbar
+        {...props}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <div className="search-content">
-        <div className="search-result-title">Results for </div>
+        <div className="search-result-title">Results for " "</div>
+
         <div className="search-menu">
           <div>{searchResult.length} Adventures</div>
           <div className="filter-group">
@@ -106,9 +224,9 @@ function Search(props) {
             />
           </div>
         </div>
-
         {openFilterDropdown()}
 
+        {applyFilters()}
         <div className="search-result-container">
           {searchResult.map((item, index) => {
             return (
