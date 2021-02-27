@@ -5,6 +5,7 @@ import AllPosts from "./AllPosts/AllPosts.jsx";
 import Photography from "./Photography/Photography.jsx";
 import About from "./About/About.jsx";
 import SinglePost from "./SinglePost/SinglePost.jsx";
+import Search from "./Search/Search.jsx";
 
 function Routes(props) {
   return (
@@ -15,6 +16,7 @@ function Routes(props) {
         <Route path="/photography" component={Photography} />
         <Route path="/aboutus" component={About} />
         <Route path="/post" component={SinglePost} />
+        <Route path="/search" component={Search} />
       </Switch>
     </Router>
   );

@@ -66,7 +66,14 @@ function SinglePost(props) {
         </div>
         <div className="tags-container">
           {blogPostData.tags.map((value, index) => (
-            <Label as="a" basic key={index}>
+            <Label
+              as="a"
+              basic
+              key={index}
+              onClick={() =>
+                props.history.push("/search", { blogPostCardTag: value })
+              }
+            >
               {value}
             </Label>
           ))}

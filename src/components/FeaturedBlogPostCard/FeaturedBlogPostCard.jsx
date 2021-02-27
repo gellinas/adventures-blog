@@ -56,7 +56,13 @@ function FeaturedBlogPostCard(props) {
         </Card.Content>
         <Card.Content extra>
           {props.latestPost.tags.map((value, index) => (
-            <a className="tag-link" key={index}>
+            <a
+              className="tag-link"
+              key={index}
+              onClick={() =>
+                props.history.push("/search", { blogPostCardTag: value })
+              }
+            >
               {value}
             </a>
           ))}
