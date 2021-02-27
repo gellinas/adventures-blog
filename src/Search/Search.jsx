@@ -101,17 +101,25 @@ function Search(props) {
   };
 
   const onFilterByCategoryClick = () => {
-    setIsCategoriesFilterActive(true);
+    setIsCategoriesFilterActive(!isCategoriesFilterActive);
     setIsTagsFilterActive(false);
-    setFilterCategoryIcon("chevron up");
+    if (!isCategoriesFilterActive) {
+      setFilterCategoryIcon("chevron up");
+    } else {
+      setFilterCategoryIcon("chevron down");
+    }
     setFilterTagIcon("chevron down");
   };
 
   const onFilterByTagClick = () => {
-    setIsTagsFilterActive(true);
+    setIsTagsFilterActive(!isTagsFilterActive);
     setIsCategoriesFilterActive(false);
+    if (!isTagsFilterActive) {
+      setFilterTagIcon("chevron up");
+    } else {
+      setFilterTagIcon("chevron down");
+    }
     setFilterCategoryIcon("chevron down");
-    setFilterTagIcon("chevron up");
   };
 
   const onApplyFiltersClick = () => {
