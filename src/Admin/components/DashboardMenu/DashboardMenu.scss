@@ -1,0 +1,33 @@
+.dashboard-menu-container {
+  width: 20%;
+  .ui.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    padding: 1.5em 0 0 1em;
+
+    .menu.item {
+      font-size: 1.5em;
+    }
+
+    .header {
+      font-size: 1.5em;
+      padding: 0.75em 0 0 0.75em;
+      color: #000000ab;
+    }
+  }
+  .ui.secondary.vertical.pointing.menu {
+    width: 20%;
+  }
+  .ui.secondary.vertical.pointing.menu .item {
+    font-size: 1.5em;
+    color: #000000da;
+  }
+
+  .ui.secondary.vertical.pointing.menu .active.item {
+    color: #1e3628;
+  }
+}

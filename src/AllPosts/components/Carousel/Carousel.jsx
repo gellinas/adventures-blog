@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
 import { Button, Icon, Image } from "semantic-ui-react";
 
-import dummyCategories from "../../../data/dummy-categories.json";
+import { getCategories } from "../../../api.js";
 
 import "./Carousel.scss";
 
 function Carousel(props) {
+  const [categories, setCategories] = useState([]);
   const [categoriesInView, setCategoriesInView] = useState(0);
   const [circleIconOne, setCircleIconOne] = useState("circle");
   const [circleIconTwo, setCircleIconTwo] = useState("circle outline");
+
+  useEffect(async () => {
+    setCategories(await getCategories());
+  }, []);
 
   useEffect(() => {
     const handleCircleIcon = () => {
@@ -24,7 +29,7 @@ function Carousel(props) {
   }, [categoriesInView]);
 
   const onForwardClick = () => {
-    if (categoriesInView < dummyCategories.length - 4) {
+    if (categoriesInView < categories.length - 4) {
       setCategoriesInView(categoriesInView + 1);
     }
   };
@@ -52,7 +57,7 @@ function Carousel(props) {
       <div className="category-slider">
         <Button icon="angle left" onClick={onBackwardClick} />
         <div className="categories-container">
-          {dummyCategories.map((category, index) => {
+          {categories.map((category, index) => {
             if (index >= categoriesInView && index < categoriesInView + 4) {
               return (
                 <div

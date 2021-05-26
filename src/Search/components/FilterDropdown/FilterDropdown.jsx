@@ -1,11 +1,20 @@
-import dummyTags from "../../../data/dummy-tags.json";
-import dummyCategories from "../../../data/dummy-categories.json";
+import { useEffect, useState } from "react";
+
+import { getCategories, getTags } from "../../../api.js";
 
 import { Button, Icon, Checkbox } from "semantic-ui-react";
 
 import "./FilterDropdown.scss";
 
 function FilterDropdown(props) {
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  useEffect(async () => {
+    setCategories(await getCategories());
+    setTags(await getTags());
+  }, []);
+
   const onCloseFilterDropdownClick = () => {
     props.setIsCategoriesFilterActive(false);
     props.setFilterCategoryIcon("chevron down");
@@ -37,7 +46,7 @@ function FilterDropdown(props) {
 
   const populateFilterLabels = () => {
     if (props.isCategoriesFilterActive) {
-      return dummyCategories.map((category, index) => {
+      return categories.map((category, index) => {
         return (
           <div className="dropdown-option" key={index}>
             <Checkbox
@@ -51,7 +60,7 @@ function FilterDropdown(props) {
     }
 
     if (props.isTagsFilterActive) {
-      return dummyTags.map((tag, index) => {
+      return tags.map((tag, index) => {
         return (
           <div className="dropdown-option" key={index}>
             <Checkbox
