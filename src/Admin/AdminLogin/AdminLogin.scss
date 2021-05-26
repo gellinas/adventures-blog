@@ -1,0 +1,29 @@
+.admin-login-page-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e3628;
+
+  .login-form-container {
+    display: flex;
+    width: 32vw;
+    height: 70vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 1.5em;
+
+    .form-title {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+
+    .ui.form {
+      margin-bottom: 1em;
+    }
+  }
+}

@@ -49,8 +49,8 @@ function Navbar(props) {
           />
         }
         placeholder="Search..."
-        onChange={onSearchQuery}
         value={navbarInput}
+        onChange={onSearchQuery}
       />
     </div>
   );

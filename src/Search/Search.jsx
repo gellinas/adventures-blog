@@ -7,12 +7,13 @@ import Footer from "../components/Footer/Footer.jsx";
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
 import FilterDropdown from "./components/FilterDropdown/FilterDropdown.jsx";
 
-import dummyData from "../data/dummy-adventures.json";
+import { getAdventures } from "../api.js";
 
 import "./Search.scss";
 
 function Search(props) {
-  const [searchResult, setSearchResult] = useState(dummyData);
+  const [adventureData, setAdventureData] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
   const [filterCategoryIcon, setFilterCategoryIcon] = useState("chevron down");
   const [filterTagIcon, setFilterTagIcon] = useState("chevron down");
   const [isCategoriesFilterActive, setIsCategoriesFilterActive] = useState(
@@ -25,40 +26,95 @@ function Search(props) {
   const [applyFiltersVisible, setApplyFiltersVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
+  useEffect(async () => {
+    setAdventureData(await getAdventures());
+  }, []);
+
+  useEffect(async () => {
+    // if (!isEmpty(adventureData)) {
+    console.log(adventureData);
     if (get(props.location.state, "carouselCategory", undefined)) {
-      const filterByCategory = dummyData.filter((blogPostData, index) =>
+      const filterByCategory = adventureData.filter((blogPostData, index) =>
         blogPostData.categories.includes(
           get(props.location.state, "carouselCategory", undefined)
         )
       );
       setSearchResult(filterByCategory);
-    }
-    if (get(props.location.state, "blogPostCardTag", undefined)) {
-      const filterByTagClick = dummyData.filter((blogPostData, index) =>
+    } else if (get(props.location.state, "blogPostCardTag", undefined)) {
+      const filterByTagClick = adventureData.filter((blogPostData, index) =>
         blogPostData.tags.includes(
           get(props.location.state, "blogPostCardTag", undefined)
         )
       );
       setSearchResult(filterByTagClick);
-    }
-    if (get(props.location.state, "navbarQuery", undefined)) {
+    } else if (get(props.location.state, "navbarQuery", undefined)) {
       setSearchQuery(props.location.state.navbarQuery);
+    } else {
+      setSearchResult(adventureData);
     }
+    // }
   }, [
     get(props.location.state, "carouselCategory", undefined),
     get(props.location.state, "blogPostCardTag", undefined),
     get(props.location.state, "navbarQuery", undefined),
+    adventureData,
   ]);
 
   useEffect(() => {
-    if (!isEmpty(tagsChecked) || !isEmpty(categoriesChecked)) {
+    if (
+      !isEmpty(tagsChecked) &&
+      isEmpty(categoriesChecked) &&
+      applyFiltersVisible
+    ) {
+      const filterByTagsChecked = adventureData.filter(
+        (blogPostData, index) =>
+          !isEmpty(tagsChecked.filter((tag) => blogPostData.tags.includes(tag)))
+      );
+      setSearchResult(filterByTagsChecked);
+      setClearFiltersVisible(true);
+    }
+    if (
+      !isEmpty(categoriesChecked) &&
+      isEmpty(tagsChecked) &&
+      applyFiltersVisible
+    ) {
+      const filterByCategoriesChecked = adventureData.filter(
+        (blogPostData, index) =>
+          !isEmpty(
+            categoriesChecked.filter((category) =>
+              blogPostData.categories.includes(category)
+            )
+          )
+      );
+      setSearchResult(filterByCategoriesChecked);
+      setClearFiltersVisible(true);
+    }
+
+    if (
+      !isEmpty(categoriesChecked) &&
+      !isEmpty(tagsChecked) &&
+      applyFiltersVisible
+    ) {
+      // Filter out blog posts that match category tag
+      const filterByTagsAndCategories = adventureData.filter((blogPostData) => {
+        const filterByCategoriesChecked = !isEmpty(
+          categoriesChecked.filter((category) =>
+            blogPostData.categories.includes(category)
+          )
+        );
+        const filterByTagsChecked = !isEmpty(
+          tagsChecked.filter((tag) => blogPostData.tags.includes(tag))
+        );
+        return filterByCategoriesChecked || filterByTagsChecked;
+      });
+      setSearchResult(filterByTagsAndCategories);
       setClearFiltersVisible(true);
     }
     if (isEmpty(tagsChecked) && isEmpty(categoriesChecked)) {
+      setSearchResult(adventureData);
       setClearFiltersVisible(false);
     }
-  }, [tagsChecked, categoriesChecked]);
+  }, [tagsChecked, categoriesChecked, applyFiltersVisible]);
 
   const options = [
     {
@@ -79,7 +135,6 @@ function Search(props) {
     if (isCategoriesFilterActive === true || isTagsFilterActive === true) {
       return (
         <FilterDropdown
-          dummyData={dummyData}
           isCategoriesFilterActive={isCategoriesFilterActive}
           setIsCategoriesFilterActive={setIsCategoriesFilterActive}
           isTagsFilterActive={isTagsFilterActive}
@@ -123,13 +178,13 @@ function Search(props) {
   };
 
   const onApplyFiltersClick = () => {
-    if (clearFiltersVisible) {
-      setIsCategoriesFilterActive(false);
-      setFilterCategoryIcon("chevron down");
-      setIsTagsFilterActive(false);
-      setFilterTagIcon("chevron down");
-      setApplyFiltersVisible(true);
-    }
+    // if (clearFiltersVisible) {
+    setIsCategoriesFilterActive(false);
+    setFilterCategoryIcon("chevron down");
+    setIsTagsFilterActive(false);
+    setFilterTagIcon("chevron down");
+    setApplyFiltersVisible(true);
+    // }
   };
 
   const removeSingleCategoryFilter = (category) => {

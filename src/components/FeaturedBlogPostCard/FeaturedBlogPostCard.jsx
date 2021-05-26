@@ -55,7 +55,7 @@ function FeaturedBlogPostCard(props) {
           </div>
         </Card.Content>
         <Card.Content extra>
-          {props.latestPost.tags.map((value, index) => (
+          {(props.latestPost.tags || []).map((value, index) => (
             <a
               className="tag-link"
               key={index}

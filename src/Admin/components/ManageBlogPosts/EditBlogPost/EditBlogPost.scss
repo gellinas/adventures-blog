@@ -1,0 +1,11 @@
+.edit-blog-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .edit-blog-post-header {
+    font-size: 3em;
+    margin: 1em 0.5em;
+  }
+}

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlogPostCard.jsx";
@@ -6,12 +8,17 @@ import Carousel from "./components/Carousel/Carousel.jsx";
 
 import { Pagination, Icon } from "semantic-ui-react";
 
-import dummyData from "../data/dummy-adventures.json";
+import { getAdventures } from "../api.js";
 
 import "./AllPosts.scss";
 
 function AllPosts(props) {
-  const [latestPost, ...posts] = dummyData;
+  const [adventureData, setAdventureData] = useState([]);
+  const [latestPost = {}, ...posts] = adventureData;
+
+  useEffect(async () => {
+    setAdventureData(await getAdventures());
+  }, []);
 
   return (
     <div className="all-posts-container">
