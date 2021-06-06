@@ -49,7 +49,6 @@ function SinglePost(props) {
           adventure.categories.includes(category)
         )
     );
-    console.log(similarPosts);
     if (similarPosts.length > 0) {
       return (
         <div className="more-posts">

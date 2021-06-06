@@ -10,7 +10,6 @@ import EditPhotography from "./components/ManagePhotography/EditPhotography/Edit
 import "./Admin.scss";
 
 function Admin(props) {
-  //change default state, setting for testing
   const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
 
   const handleActiveComponent = () => {

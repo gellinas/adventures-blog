@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
-import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlogPostCard.jsx";
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
 import Carousel from "./components/Carousel/Carousel.jsx";
 
@@ -14,7 +13,8 @@ import "./AllPosts.scss";
 
 function AllPosts(props) {
   const [adventureData, setAdventureData] = useState([]);
-  const [latestPost = {}, ...posts] = adventureData;
+  const [currentPage, setCurrentPage] = useState(1);
+  const posts = adventureData;
 
   useEffect(async () => {
     setAdventureData(await getAdventures());
@@ -31,25 +31,34 @@ function AllPosts(props) {
 
         <div className="adventures-section">
           <div className="section-title">Adventures</div>
-          <FeaturedBlogPostCard latestPost={latestPost} {...props} />
           <div className="blog-post-container">
-            {posts.map((item, index) => {
-              return (
-                <div className="blog-post-card-div" key={index}>
-                  <BlogPostCard blogPostData={item} index={index} {...props} />
-                </div>
-              );
-            })}
+            {posts
+              .slice((currentPage - 1) * 9, (currentPage - 1) * 9 + 9)
+              .map((item, index) => {
+                return (
+                  <div className="blog-post-card-div" key={index}>
+                    <BlogPostCard
+                      blogPostData={item}
+                      index={index}
+                      {...props}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
       <Pagination
-        defaultActivePage={1}
+        activePage={currentPage}
+        onPageChange={(event, data) => {
+          setCurrentPage(data.activePage);
+          window.scrollTo(0, 0);
+        }}
         firstItem={{ content: <Icon name="angle double left" />, icon: true }}
         lastItem={{ content: <Icon name="angle double right" />, icon: true }}
         pointing
         secondary
-        totalPages={3}
+        totalPages={posts.length / 9}
       />
       <Footer />
     </div>
