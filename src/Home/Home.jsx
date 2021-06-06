@@ -46,22 +46,27 @@ function Home(props) {
             <FeaturedBlogPostCard latestPost={latestPost} {...props} />
             <div className="blog-post-container">
               {posts.map((item, index) => {
-                return (
-                  <div className="blog-post-card-div" key={index}>
-                    <BlogPostCard
-                      blogPostData={item}
-                      index={index}
-                      {...props}
-                    />
-                  </div>
-                );
+                if (index <= 5) {
+                  return (
+                    <div className="blog-post-card-div" key={index}>
+                      <BlogPostCard
+                        blogPostData={item}
+                        index={index}
+                        {...props}
+                      />
+                    </div>
+                  );
+                }
               })}
             </div>
           </div>
           <div className="see-more">
             <Button
               className="see-more-button"
-              onClick={() => props.history.push("/adventures")}
+              onClick={() => {
+                props.history.push("/adventures");
+                window.scrollTo(0, 0);
+              }}
             >
               More Adventures
             </Button>
@@ -71,7 +76,7 @@ function Home(props) {
             <div className="section-title">Recent Photography</div>
             <div className="photo-images-container">
               {photoData.map((item, index) => {
-                if (index <= 3) {
+                if (index <= 5) {
                   return (
                     <div key={index}>
                       <PhotographyImage
@@ -89,7 +94,10 @@ function Home(props) {
           <div className="see-more">
             <Button
               className="see-more-button"
-              onClick={() => props.history.push("/photography")}
+              onClick={() => {
+                props.history.push("/photography");
+                window.scrollTo(0, 0);
+              }}
             >
               More Photogragphy
             </Button>

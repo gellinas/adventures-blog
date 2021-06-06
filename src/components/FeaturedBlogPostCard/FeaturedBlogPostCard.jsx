@@ -26,17 +26,19 @@ function FeaturedBlogPostCard(props) {
       <Image
         src={props.latestPost.main_image}
         className="featrued-card-img"
-        onClick={() =>
-          props.history.push("/post", { blogPostData: props.latestPost })
-        }
+        onClick={() => {
+          props.history.push("/post", { blogPostData: props.latestPost });
+          window.scrollTo(0, 0);
+        }}
       />
       <Card>
         <Card.Content>
           <Card.Header
             className="featured-title"
-            onClick={() =>
-              props.history.push("/post", { blogPostData: props.latestPost })
-            }
+            onClick={() => {
+              props.history.push("/post", { blogPostData: props.latestPost });
+              window.scrollTo(0, 0);
+            }}
           >
             {props.latestPost.title}
           </Card.Header>
@@ -46,9 +48,10 @@ function FeaturedBlogPostCard(props) {
           <Card.Description>{props.latestPost.summary}</Card.Description>
           <div
             className="read-more"
-            onClick={() =>
-              props.history.push("/post", { blogPostData: props.latestPost })
-            }
+            onClick={() => {
+              props.history.push("/post", { blogPostData: props.latestPost });
+              window.scrollTo(0, 0);
+            }}
           >
             read more
             <Icon name="long arrow alternate right" size="large" />
@@ -59,9 +62,10 @@ function FeaturedBlogPostCard(props) {
             <a
               className="tag-link"
               key={index}
-              onClick={() =>
-                props.history.push("/search", { blogPostCardTag: value })
-              }
+              onClick={() => {
+                props.history.push("/search", { blogPostCardTag: value });
+                window.scrollTo(0, 0);
+              }}
             >
               {value}
             </a>

@@ -29,17 +29,19 @@ function BlogPostCard(props) {
           <Image
             src={props.blogPostData.main_image}
             className="blog-post-card-img"
-            onClick={() =>
-              props.history.push("/post", { blogPostData: props.blogPostData })
-            }
+            onClick={() => {
+              props.history.push("/post", { blogPostData: props.blogPostData });
+              window.scrollTo(0, 0);
+            }}
             fluid
           />
         </div>
         <Card.Content className="blog-post-card-content-holder">
           <Card.Header
-            onClick={() =>
-              props.history.push("/post", { blogPostData: props.blogPostData })
-            }
+            onClick={() => {
+              props.history.push("/post", { blogPostData: props.blogPostData });
+              window.scrollTo(0, 0);
+            }}
           >
             {props.blogPostData.title}
           </Card.Header>
@@ -49,9 +51,10 @@ function BlogPostCard(props) {
           <Card.Description>{props.blogPostData.summary}</Card.Description>
           <div
             className="read-more"
-            onClick={() =>
-              props.history.push("/post", { blogPostData: props.blogPostData })
-            }
+            onClick={() => {
+              props.history.push("/post", { blogPostData: props.blogPostData });
+              window.scrollTo(0, 0);
+            }}
           >
             read more
             <Icon name="long arrow alternate right" size="large" />
@@ -62,9 +65,10 @@ function BlogPostCard(props) {
             <a
               className="tag-link"
               key={index}
-              onClick={() =>
-                props.history.push("/search", { blogPostCardTag: value })
-              }
+              onClick={() => {
+                props.history.push("/search", { blogPostCardTag: value });
+                window.scrollTo(0, 0);
+              }}
             >
               {value}
             </a>

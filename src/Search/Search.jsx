@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { get, isEmpty } from "lodash";
-import { Dropdown, Icon } from "semantic-ui-react";
+import { Dropdown, Icon, Pagination } from "semantic-ui-react";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
@@ -25,14 +25,13 @@ function Search(props) {
   const [clearFiltersVisible, setClearFiltersVisible] = useState(false);
   const [applyFiltersVisible, setApplyFiltersVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(async () => {
     setAdventureData(await getAdventures());
   }, []);
 
   useEffect(async () => {
-    // if (!isEmpty(adventureData)) {
-    console.log(adventureData);
     if (get(props.location.state, "carouselCategory", undefined)) {
       const filterByCategory = adventureData.filter((blogPostData, index) =>
         blogPostData.categories.includes(
@@ -52,7 +51,6 @@ function Search(props) {
     } else {
       setSearchResult(adventureData);
     }
-    // }
   }, [
     get(props.location.state, "carouselCategory", undefined),
     get(props.location.state, "blogPostCardTag", undefined),
@@ -178,13 +176,11 @@ function Search(props) {
   };
 
   const onApplyFiltersClick = () => {
-    // if (clearFiltersVisible) {
     setIsCategoriesFilterActive(false);
     setFilterCategoryIcon("chevron down");
     setIsTagsFilterActive(false);
     setFilterTagIcon("chevron down");
     setApplyFiltersVisible(true);
-    // }
   };
 
   const removeSingleCategoryFilter = (category) => {
@@ -291,15 +287,29 @@ function Search(props) {
 
         {applyFilters()}
         <div className="search-result-container">
-          {searchResult.map((item, index) => {
-            return (
-              <div className="search-result" key={index}>
-                <BlogPostCard blogPostData={item} index={index} {...props} />
-              </div>
-            );
-          })}
+          {searchResult
+            .slice((currentPage - 1) * 9, (currentPage - 1) * 9 + 9)
+            .map((item, index) => {
+              return (
+                <div className="search-result" key={index}>
+                  <BlogPostCard blogPostData={item} index={index} {...props} />
+                </div>
+              );
+            })}
         </div>
       </div>
+      <Pagination
+        activePage={currentPage}
+        onPageChange={(event, data) => {
+          setCurrentPage(data.activePage);
+          window.scrollTo(0, 0);
+        }}
+        firstItem={{ content: <Icon name="angle double left" />, icon: true }}
+        lastItem={{ content: <Icon name="angle double right" />, icon: true }}
+        pointing
+        secondary
+        totalPages={searchResult.length / 9}
+      />
       <Footer />
     </div>
   );
