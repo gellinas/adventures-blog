@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./Home/Home.jsx";
 import AllPosts from "./AllPosts/AllPosts.jsx";
@@ -11,8 +11,10 @@ import Admin from "./Admin/Admin.jsx";
 import AdminLogin from "./Admin/AdminLogin/AdminLogin.jsx";
 
 function Routes(props) {
+  const [adminToken, setAdminToken] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log('firing')
   }, []);
 
   return (
@@ -24,8 +26,11 @@ function Routes(props) {
         <Route path="/aboutus" component={About} />
         <Route path="/post" component={SinglePost} />
         <Route path="/search" component={Search} />
-        <Route path="/admin" component={Admin} />
-        <Route path="/adminlogin" component={AdminLogin} />
+        <Route 
+          path="/admin" 
+          render={(props) => <Admin {...props} accessToken={adminToken} />}
+        />
+        <Route path="/adminlogin" component={(props) => <AdminLogin {...props} setAdminToken={setAdminToken} />} />
       </Switch>
     </Router>
   );

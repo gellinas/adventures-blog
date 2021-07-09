@@ -8,28 +8,39 @@ import dummyDraftPhotos from "./data/dummy-draft-photos.json"
 const dummyData = true;
 
 const getAdventures = async () => {
-    const url =""
+    const url="http://52.91.134.225/services/quest/adventures/"
     let data;
-    if (dummyData) {
-        data = dummyAdventures;
-    } else {
+    // if (dummyData) {
+    //     data = dummyAdventures;
+    // } else {
         const response = await  fetch(url, {method: "GET"})
         data = await response.json();
-    }
+    // }
     return data;
 }
 
+const queryForAdventures = async (query = '') => {
+    const url="http://localhost:5000/adventures/search"
+    let data;
+    const response = await fetch(url,  {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ query })})
+    data = await response.json()
+    console.log(data)
+    return data;   
+}
+
 const getPhotos = async () => {
-    const url=""
+    const url="http://52.91.134.225/services/quest/photos/"
     let data; 
-    if (dummyData) {
-        data = dummyPhotos;
-    } else {
-        const response = await fetch(url, {method: "GET"})
+    // if (dummyData) {
+    //     data = dummyPhotos;
+    // } else {
+        const response = await fetch(url, { method: "GET"})
         data = await response.json()
-    }
+    // }
+    console.log(data);
     return data;
 }
+
 
 const getCategories = async () => {
     const url=""
@@ -151,4 +162,31 @@ const deletePhoto = async (photo) => {
     return data;
 }
 
-export {getAdventures, getPhotos, getCategories, getTags, getDraftAdventures, getDraftPhotos, publishAdventure, publishPhoto, updateAdventure, updatePhoto, deleteAdventure, deletePhoto};
+const loginAdmin = async (props) => {
+    const url="http://localhost:5000/admin/login"
+    console.log(props)
+    let data;
+    // if (dummyData) {
+    //     data = { result: 'successful publish', adventure: adventure };
+    // } else {
+        const response = await fetch(url, {    credentials: 'include'
+
+,        method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(props)})
+        data = await response.json()
+    // }
+    return data;
+} 
+
+const refreshLogin = async () => {
+    const url="http://localhost:5000/admin/refresh"
+    let data;
+    // if (dummyData) {
+    //     data = { result: 'successful publish', adventure: adventure };
+    // } else {
+        const response = await fetch(url, { credentials: 'include', method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify()})
+        data = await response.json()
+    // }
+    return data;
+} 
+
+export {getAdventures, getPhotos, getCategories, getTags, getDraftAdventures, getDraftPhotos, publishAdventure, publishPhoto, updateAdventure, updatePhoto, deleteAdventure, deletePhoto, queryForAdventures, loginAdmin, refreshLogin};

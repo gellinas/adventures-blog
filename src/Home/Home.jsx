@@ -7,7 +7,7 @@ import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlo
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
 import PhotographyImage from "../components/PhotographyImage/PhotographyImage.jsx";
 
-import { Button } from "semantic-ui-react";
+import { Button,Image } from "semantic-ui-react";
 import LoadingOverlay from "react-loading-overlay";
 import SkewLoader from "react-spinners/SkewLoader";
 import { isEmpty } from "lodash";
@@ -41,6 +41,7 @@ function Home(props) {
         <Navbar {...props} />
         <div className="home-content">
           <HeroHeader />
+          <Image src="../Assets/AboutUs.jpeg" />
           <div className="recent-adventures-section">
             <div className="section-title">Recent Adventures</div>
             <FeaturedBlogPostCard latestPost={latestPost} {...props} />

@@ -1,11 +1,26 @@
 import { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
+import { loginAdmin, refreshLogin} from '../../api';
+import Cookies from 'js-cookie';
 
 import "./AdminLogin.scss";
 
 function AdminLogin(props) {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
+
+  const logonAdmin = async () => {
+    const response = await loginAdmin({ email: usernameField, password: passwordField });
+    console.log(response);
+    await refreshLogin({});
+    if (response.access_token) {
+      props.setAdminToken(response.access_token);
+      console.log(props);
+      props.history.push("/admin");
+    } else {
+      props.history.push('/')
+    }
+  }
 
   return (
     <div className="admin-login-page-container">
@@ -16,7 +31,7 @@ function AdminLogin(props) {
             value={usernameField}
             onChange={(event) => setUsernameField(event.target.value)}
           >
-            <label>Username</label>
+            <label>Email</label>
             <input />
           </Form.Field>
           <Form.Field
@@ -27,7 +42,7 @@ function AdminLogin(props) {
             <input type="password" />
           </Form.Field>
         </Form>
-        <Button secondary onClick={() => props.history.push("/admin")}>
+        <Button secondary onClick={() => logonAdmin()}>
           Submit
         </Button>
       </div>

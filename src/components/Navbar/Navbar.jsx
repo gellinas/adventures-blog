@@ -7,6 +7,7 @@ function Navbar(props) {
   const [navbarInput, setNavbarInput] = useState("");
 
   const onSearchQuery = (event) => {
+    console.log(event.target.value)
     if (props.setSearchQuery) {
       props.setSearchQuery(event.target.value);
     }
@@ -43,9 +44,10 @@ function Navbar(props) {
           <Icon
             name="search"
             link
-            onClick={() =>
+            onClick={() => {
+              console.log('clicked')
               props.history.push("/search", { navbarInput: navbarInput })
-            }
+            }}
           />
         }
         placeholder="Search..."
