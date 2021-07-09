@@ -5,7 +5,60 @@
   min-height: 100vh;
 
   .about-content {
+    display: flex;
+    padding: 1em 2em;
+    flex-direction: row;
     align-content: center;
     flex: 1 0 auto;
+
+    .about-us-image {
+      margin: 0.5em 2em;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40vw;
+      margin: 0.5em 2em;
+    }
+
+    .about-header {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 0.75em 0.5em 0.75em 0;
+    }
+
+    .our-story-container {
+      margin-bottom: 1em;
+    }
+    .signature-container {
+      margin-bottom: 2em;
+    }
+
+    .contact-us-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .contact-us-heading {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+      }
+
+      .instagram-handle {
+        cursor: pointer;
+        padding: 0.5em;
+      }
+      .email {
+        cursor: pointer;
+        padding: 0.5em;
+        color: #000000de;
+      }
+    }
   }
 }

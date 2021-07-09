@@ -17,14 +17,14 @@ function Navbar(props) {
   return (
     <div className="navbar-container">
       <Button className="home-button" onClick={() => props.history.push("/")}>
-        DxD
+        Advntr Archive
       </Button>
       <Button.Group className="nav-group-buttons">
         <Button
           className="nav-button"
           onClick={() => props.history.push("/adventures")}
         >
-          Adventures
+          Explore
         </Button>
         <Button
           className="nav-button"
