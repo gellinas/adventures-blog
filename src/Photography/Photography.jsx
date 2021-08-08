@@ -23,7 +23,7 @@ function Photography(props) {
       <Navbar {...props} />
       <Ref innerRef={refContainer}>
         <div className="photography-content">
-          <div className="photography-header">Photogragphy Archive</div>
+          <div className="photography-header">Photography Archive</div>
           <div className="photo-images-container">
             {photoData.map((item, index) => {
               return (
@@ -38,7 +38,7 @@ function Photography(props) {
               );
             })}
           </div>
-          <Rail internal position="right">
+          <Rail className="scroll-to-top-rail" internal position="right">
             <Sticky context={refContainer} pushing>
               <Button
                 icon

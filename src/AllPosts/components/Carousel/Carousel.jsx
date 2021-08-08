@@ -48,10 +48,6 @@ function Carousel(props) {
     setCategoriesInView(4);
   };
 
-  const onCategoryClick = () => {
-    props.history.push("search");
-  };
-
   return (
     <div className="carousel-wrapper">
       <div className="category-slider">

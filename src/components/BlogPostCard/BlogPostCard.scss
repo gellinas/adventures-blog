@@ -32,12 +32,12 @@
     }
 
     .blog-post-card-img-holder {
-      height: 30vh;
+      height: max-content;
       overflow: hidden;
       cursor: pointer;
 
       .blog-post-card-img {
-        min-height: 30vh;
+        max-height: 220px;
       }
     }
     .ui.card.content.blog-post-card-content-holder {
@@ -55,7 +55,7 @@
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .blog-post-card {
     display: flex;
     flex-flow: row wrap;
@@ -63,7 +63,7 @@
     transition: transform 0.2s;
 
     .ui.card {
-      width: 50vw;
+      width: 40vw;
       box-shadow: none;
       .header {
         cursor: pointer;
@@ -90,16 +90,75 @@
       }
 
       .blog-post-card-img-holder {
-        height: 30vh;
+        height: max-content;
         overflow: hidden;
         cursor: pointer;
 
         .blog-post-card-img {
-          min-height: 30vh;
+          max-height: 200px;
         }
       }
       .ui.card.content.blog-post-card-content-holder {
-        width: 50vw;
+        width: 40vw;
+        height: 50vh;
+      }
+
+      .tag-link {
+        padding: 0.25em;
+      }
+    }
+  }
+
+  .blog-post-card:hover .blog-post-card-img-holder {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-post-card {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1em 1em;
+    transition: transform 0.2s;
+
+    .ui.card {
+      width: 70vw;
+      box-shadow: none;
+      .header {
+        cursor: pointer;
+        margin-bottom: 0.15em;
+      }
+
+      .content {
+        padding: 0.75em 0.25em;
+      }
+
+      .extra {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0.25em 0.25em;
+      }
+
+      .read-more {
+        cursor: pointer;
+        margin-top: 0.5em;
+
+        &:hover {
+          color: #4183c4;
+        }
+      }
+
+      .blog-post-card-img-holder {
+        height: max-content;
+        overflow: hidden;
+        cursor: pointer;
+
+        .blog-post-card-img {
+          max-height: 200px;
+        }
+      }
+      .ui.card.content.blog-post-card-content-holder {
+        width: 70vw;
         height: 50vh;
       }
 
