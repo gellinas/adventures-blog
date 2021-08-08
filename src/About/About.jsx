@@ -17,7 +17,6 @@ function About(props) {
         <Image
           className="about-us-image"
           src="https://adventures-archive.s3.amazonaws.com/32FC7ECA-FB34-4A83-BC8D-15E6FE9CBB31.JPG"
-          size="large"
         />
         <div className="about-text">
           <div className="about-header">Our Story</div>

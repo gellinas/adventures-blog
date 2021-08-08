@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  width: 100vw;
 
   .single-post-content {
     display: flex;
@@ -15,9 +16,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 65vw;
-      height: 65vh;
-      background-size: 65vw 65vh;
+      width: 700px;
+      height: 500px;
+      background-size: 700px 500px;
 
       .header-title-container {
         display: flex;
@@ -65,7 +66,6 @@
       align-items: center;
 
       .more-posts-header {
-        font-size: 1.5em;
         font-weight: 600;
         padding: 0.5em 0 0.5em 0;
         margin: 0.5em 4em;
@@ -100,6 +100,121 @@
         .post-image {
           width: 40vw;
           margin: 1em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .single-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+
+    .single-post-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1 0 auto;
+
+      .header-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 350px;
+        height: 225px;
+        background-size: 350px 225px;
+
+        .header-title-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: fit-content;
+          height: fit-content;
+          color: #ffffff;
+          background-color: #0000008c;
+          padding: 0.5em;
+
+          .header-title {
+            text-align: center;
+            font-size: 1.75rem;
+            margin: 0.1em 0;
+            font-weight: 900;
+            letter-spacing: 0;
+            line-height: 2rem;
+          }
+          .header-date {
+            font-size: 1.25rem;
+            margin: 0.25em;
+          }
+          .header-subtitle {
+            font-style: italic;
+            font-size: 16px;
+            margin: 0.25em;
+          }
+        }
+      }
+      .date-updated {
+        align-self: center;
+        margin: 1em 0em;
+        font-size: 16px;
+      }
+
+      .tags-container {
+        align-self: center;
+        margin: 1em 1em;
+      }
+
+      .more-posts {
+        display: flex;
+        width: 100vw;
+        flex-direction: column;
+        align-items: center;
+
+        .more-posts-header {
+          font-weight: 600;
+          padding: 0.5em 0 0.5em 0;
+          margin: 0.5em 1em;
+          font-size: 1.5rem;
+        }
+
+        .more-posts-container {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-evenly;
+        }
+      }
+
+      .post-body-container {
+        margin: 0 1em;
+        width: 100vw;
+        .post-text-container {
+          margin: 2em;
+          .body-title {
+            font-size: 1.5rem;
+            margin: 0.5em 0;
+            text-align: center;
+          }
+          .body-text {
+            font-size: 16px;
+            line-height: 24px;
+          }
+        }
+        .post-image-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .post-image {
+            width: 70vw;
+            margin: 1em;
+          }
         }
       }
     }

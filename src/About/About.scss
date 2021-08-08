@@ -8,11 +8,14 @@
     display: flex;
     padding: 1em 2em;
     flex-direction: row;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
     flex: 1 0 auto;
 
     .about-us-image {
       margin: 0.5em 2em;
+      width: 450px;
+      height: 672px;
     }
 
     .about-text {
@@ -58,6 +61,147 @@
         cursor: pointer;
         padding: 0.5em;
         color: #000000de;
+      }
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    .about-content {
+      display: flex;
+      padding: 1em 2em;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1 0 auto;
+
+      .about-us-image {
+        margin: 0.5em 2em;
+        width: 400px;
+        height: 610px;
+      }
+
+      .about-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 75vw;
+        margin: 0.5em 2em;
+      }
+
+      .about-header {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 600;
+        padding: 0.75em 0.5em 0.75em 0;
+      }
+
+      .our-story-container {
+        margin-bottom: 1em;
+      }
+      .signature-container {
+        margin-bottom: 2em;
+      }
+
+      .contact-us-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .contact-us-heading {
+          text-align: center;
+          font-size: 1.5em;
+          font-weight: 600;
+          margin-bottom: 0.5em;
+        }
+
+        .instagram-handle {
+          cursor: pointer;
+          padding: 0.5em;
+        }
+        .email {
+          cursor: pointer;
+          padding: 0.5em;
+          color: #000000de;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    .about-content {
+      display: flex;
+      padding: 1em 2em;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1 0 auto;
+
+      .about-us-image {
+        margin: 0.5em 2em;
+        width: 300px;
+        height: 450px;
+      }
+
+      .about-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80vw;
+        margin: 0.5em 1em;
+        text-align: center;
+      }
+
+      .about-header {
+        text-align: center;
+        font-size: 2em;
+        font-weight: 600;
+        padding: 0.5em;
+      }
+
+      .our-story-container {
+        margin-bottom: 1em;
+      }
+      .signature-container {
+        margin-bottom: 2em;
+      }
+
+      .contact-us-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .contact-us-heading {
+          text-align: center;
+          font-size: 1.5em;
+          font-weight: 600;
+          margin-bottom: 0.5em;
+        }
+
+        .instagram-handle {
+          cursor: pointer;
+          padding: 0.5em;
+        }
+        .email {
+          cursor: pointer;
+          padding: 0.5em;
+          color: #000000de;
+        }
       }
     }
   }
