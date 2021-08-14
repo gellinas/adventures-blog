@@ -1,37 +1,118 @@
-.navbar-container {
+.website-navbar-container {
   display: grid;
   width: 100vw;
-  height: 100px;
+  height: 80px;
   grid-template-columns: 25vw 50vw 25vw;
   background-color: #ffffff;
 
-  .ui.button.home-button {
-    background-color: transparent;
-    color: #0b090a;
-    font-size: 2.25em;
-    justify-self: start;
-    padding-left: 1.5rem;
-    align-items: center;
+  .ui.button {
+    margin: 0;
+    padding: 0;
   }
 
-  .ui.buttons.nav-group-buttons {
+  .home-button-container {
+    display: flex;
+    align-items: center;
     justify-content: center;
+
+    .ui.button.home-button {
+      background-color: transparent;
+      color: #0b090a;
+      font-size: 2.25em;
+    }
+  }
+
+  .nav-page-buttons {
+    display: flex;
     align-self: center;
+    padding-left: 2rem;
 
     .ui.button.nav-button {
       background-color: transparent;
       color: #0b090a;
       height: 3rem;
-      font-size: 1.45rem;
+      font-size: 1.2rem;
+      padding: 0.8rem;
     }
   }
 
-  .ui.input {
-    font-size: 1.25em;
-    color: #0b090a;
+  .search-input {
     justify-self: end;
-    align-self: center;
-    height: fit-content;
-    margin-right: 1em;
+    display: flex;
+    align-items: center;
+
+    .ui.input {
+      font-size: 1rem;
+      color: #0b090a;
+      width: 15rem;
+      margin-right: 2rem;
+    }
+  }
+}
+.sidebar-container {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .website-navbar-container {
+    display: none;
+  }
+
+  .sidebar-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    .sidebar-header-container {
+      display: flex;
+      width: 100%;
+      height: 8vh;
+      margin: 1em 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .menu-button {
+        display: flex;
+        background-color: transparent;
+        color: #0b090a;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        margin: 0 0.25em;
+        z-index: 1;
+      }
+
+      .ui.button:hover {
+        background-color: transparent;
+        color: #0b090a;
+      }
+
+      .sidebar-header {
+        display: flex;
+        letter-spacing: 0.1em;
+        font-size: 2.5em;
+        position: relative;
+        padding-left: 0.75em;
+      }
+    }
+
+    .ui.vertical.menu {
+      width: 100%;
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 8vh;
+
+      .search-input {
+        display: flex;
+
+        .ui.input {
+          font-size: 1rem;
+          color: #0b090a;
+          width: 95vw;
+        }
+      }
+    }
   }
 }

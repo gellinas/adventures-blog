@@ -54,3 +54,63 @@
     }
   }
 }
+
+@media (max-width: 1050px) {
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    .home-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto;
+      width: 100vw;
+
+      .recent-adventures-section {
+        width: 100vw;
+        padding: 0 1em;
+      }
+
+      .photo-archive-section {
+        width: 100vw;
+        padding: 0 1em;
+      }
+
+      .section-title {
+        font-size: 1.5em;
+        font-weight: 600;
+        padding: 0.5em 0 0.5em 0;
+      }
+
+      .see-more {
+        display: flex;
+        min-width: 100vw;
+        margin: 1em 0;
+        justify-content: center;
+
+        .see-more-button {
+          background-color: #0b090a;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .blog-post-container {
+      display: flex;
+
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+    }
+
+    .photo-images-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      .single-image-container {
+        margin: 0.5em;
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 const dummyData = true;
 
 const getAdventures = async () => {
-  const url = "http://localhost:5000/adventures/";
+  const url = "http://52.91.134.225/services/quest/adventures/";
   let data;
   // if (dummyData) {
   //     data = dummyAdventures;
@@ -21,7 +21,7 @@ const getAdventures = async () => {
 };
 
 const queryForAdventures = async (query = "") => {
-  const url = "http://localhost:5000/adventures/search";
+  const url = "http://52.91.134.225/services/quest/adventures/search";
   let data;
   const response = await fetch(url, {
     method: "POST",
@@ -33,7 +33,7 @@ const queryForAdventures = async (query = "") => {
 };
 
 const getPhotos = async () => {
-  const url = "http://localhost:5000/photos/";
+  const url = "http://52.91.134.225/services/quest/photos/";
   let data;
   // if (dummyData) {
   //     data = dummyPhotos;
@@ -45,7 +45,7 @@ const getPhotos = async () => {
 };
 
 const getCategories = async () => {
-  const url = "http://localhost:5000/adventures/categories";
+  const url = "http://52.91.134.225/services/quest/adventures/categories";
   let data;
   // if (dummyData) {
   //     data = dummyCategories;
@@ -57,7 +57,7 @@ const getCategories = async () => {
 };
 
 const getTags = async () => {
-  const url = "http://localhost:5000/adventures/tags";
+  const url = "http://52.91.134.225/services/quest/adventures/tags";
   let data;
   // if (dummyData) {
   //     data = dummyTags;
@@ -69,7 +69,7 @@ const getTags = async () => {
 };
 
 const getDraftAdventures = async () => {
-  const url = "http://localhost:5000/adventures/drafts";
+  const url = "http://52.91.134.225/services/quest/adventures/drafts";
   let data;
   if (dummyData) {
     data = dummyDraftAdventures;
@@ -81,7 +81,7 @@ const getDraftAdventures = async () => {
 };
 
 const getDraftPhotos = async () => {
-  const url = "http://localhost:5000/photos/drafts";
+  const url = "http://52.91.134.225/services/quest/photos/drafts";
   let data;
   if (dummyData) {
     data = dummyDraftPhotos;
@@ -93,7 +93,7 @@ const getDraftPhotos = async () => {
 };
 
 const publishAdventure = async (adventure) => {
-  const url = "http://localhost:5000/adventures/";
+  const url = "http://52.91.134.225/services/quest/adventures/";
   let data;
   // if (dummyData) {
   //     data = { result: 'successful publish', adventure: adventure };
@@ -113,7 +113,7 @@ const publishAdventure = async (adventure) => {
 };
 
 const publishPhoto = async (photo) => {
-  const url = "http://localhost:5000/photos/";
+  const url = "http://52.91.134.225/services/quest/photos/";
   let data;
   // if (dummyData) {
   //     data = { result: 'successful publish', photo: photo };
@@ -133,7 +133,7 @@ const publishPhoto = async (photo) => {
 };
 
 const updateAdventure = async (adventure) => {
-  const url = `http://localhost:5000/adventures/${adventure.id}`;
+  const url = `http://52.91.134.225/services/quest/adventures/${adventure.id}`;
   let data;
   // if (dummyData) {
   //     data = { result: 'successful update', adventure: adventure };
@@ -153,7 +153,7 @@ const updateAdventure = async (adventure) => {
 };
 
 const updatePhoto = async (photo) => {
-  const url = `http://localhost:5000/photos/${photo.id}`;
+  const url = `http://52.91.134.225/services/quest/photos/${photo.id}`;
   let data;
   // if (dummyData) {
   //     data = { result: 'successful update', photo: photo };
@@ -205,7 +205,7 @@ const deletePhoto = async (photo) => {
 };
 
 const loginAdmin = async (props) => {
-  const url = "http://localhost:5000/admin/login";
+  const url = "http://52.91.134.225/services/quest/admin/login";
   let data;
   // if (dummyData) {
   //     data = { result: 'successful publish', adventure: adventure };
@@ -223,7 +223,7 @@ const loginAdmin = async (props) => {
 };
 
 const refreshLogin = async (accessToken) => {
-  const url = "http://localhost:5000/admin/refresh";
+  const url = "http://52.91.134.225/services/quest/admin/refresh";
   let data;
   // if (dummyData) {
   //     data = { result: 'successful publish', adventure: adventure };

@@ -9,14 +9,20 @@
     align-content: center;
     flex: 1 0 auto;
 
-    .categories-section {
+    .carousel-categories-section {
+      display: flex;
       width: 100vw;
+      flex-direction: column;
       padding: 0 7em 0 7em;
+    }
+
+    .dropdown-categories-section {
+      display: none;
     }
 
     .adventures-section {
       width: 100vw;
-      padding: 0 7em 0 7em;
+      padding: 0 5em 0 5em;
 
       .blog-post-container {
         display: flex;
@@ -35,5 +41,111 @@
   .ui.secondary.pointing.menu {
     margin: 1em;
     border-bottom: none;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .all-posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+
+    .all-posts-content {
+      align-content: center;
+      flex: 1 0 auto;
+
+      .carousel-categories-section {
+        display: none;
+      }
+
+      .adventures-section {
+        width: 100vw;
+        padding: 0;
+        justify-content: center;
+
+        .blog-post-container {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-evenly;
+        }
+      }
+      .adventure-section-heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 1em 2.5em;
+      }
+
+      .section-title {
+        font-size: 1.65em;
+        font-weight: 600;
+        padding: 0.5em 0 0.5em 0;
+        text-align: center;
+      }
+
+      .dropdown-categories-section {
+        display: flex;
+      }
+    }
+
+    .ui.secondary.pointing.menu {
+      margin: 1em;
+      border-bottom: none;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .all-posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+
+    .all-posts-content {
+      align-content: center;
+      flex: 1 0 auto;
+
+      .carousel-categories-section {
+        display: none;
+      }
+
+      .adventures-section {
+        width: 100vw;
+        padding: 0;
+        justify-content: center;
+
+        .blog-post-container {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-evenly;
+        }
+      }
+      .adventure-section-heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 1em 1.5em;
+      }
+
+      .section-title {
+        font-size: 1.65em;
+        font-weight: 600;
+        padding: 0.5em 0 0.5em 0;
+        text-align: center;
+      }
+
+      .dropdown-categories-section {
+        display: flex;
+      }
+    }
+
+    .ui.secondary.pointing.menu {
+      margin: 1em;
+      border-bottom: none;
+    }
   }
 }
