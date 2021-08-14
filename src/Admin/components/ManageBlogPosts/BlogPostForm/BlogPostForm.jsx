@@ -130,6 +130,7 @@ function BlogPostForm(props) {
         categories: props.postCategories,
         tags: props.postTags,
         draft: false,
+        id: props.selectedPost.id,
       };
       response = await updateAdventure(blogPost);
     } else {
@@ -148,7 +149,6 @@ function BlogPostForm(props) {
       response = await publishAdventure(blogPost);
     }
     setConfirmPostToBlog(false);
-    console.log(response);
   };
 
   const onSaveAsDraftClick = async () => {
@@ -182,7 +182,6 @@ function BlogPostForm(props) {
       };
       response = await publishAdventure(blogPost);
     }
-    console.log(response);
   };
 
   const onDeleteClick = async () => {
@@ -199,7 +198,6 @@ function BlogPostForm(props) {
     };
     const response = await deleteAdventure(blogPost);
     setConfirmDelete(false);
-    console.log(response);
   };
 
   return (

@@ -9,21 +9,21 @@ import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import EditBlogPost from "./components/ManageBlogPosts/EditBlogPost/EditBlogPost.jsx";
 import EditPhotography from "./components/ManagePhotography/EditPhotography/EditPhotography.jsx";
 import { refreshLogin } from "../api";
+import Cookies from 'js-cookie';
 
 import "./Admin.scss";
 
 function Admin(props) {
   const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
   const [fetchingNewAccessToken, setFetchingNewAccessToken] = useState(false);
-  const [accessToken, setAccessToken] = useState(null);
+  // const [accessToken, setAccessToken] = useState(false);
 
   useEffect(async () => {
-    console.log('here')
-    if (!props.accessToken) {
+    if (!props.accessToken || !props.location.state.accessToken) {
       setFetchingNewAccessToken(true)
-      const response = await refreshLogin();
+      const response = await refreshLogin(props.accessToken);
       if (response.access_token) {
-        setAccessToken(response.access_token);
+        props.setAdminToken(response.access_token);
         setFetchingNewAccessToken(false)
       } else {
         props.history.push('/')
@@ -49,17 +49,22 @@ function Admin(props) {
     }
   };
 
-  console.log(accessToken, fetchingNewAccessToken)
   return (
     <div className="admin-page-container">
       <LoadingOverlay
-        active={!accessToken && fetchingNewAccessToken}
+        active={!props.accessToken || fetchingNewAccessToken}
         spinner={<SkewLoader color="#335B43" size="55px" />}
-        // styles={{
-        //   wrapper: {
-        //     overflow: isEmpty(adventureData) ? "hidden" : "unset",
-        //   },
-        // }}
+        styles={{
+          wrapper: {
+            width: '100%'
+          },
+          overlay: (base) => {
+            return {
+              ...base,
+              background: '#2b2b2b',
+            }
+          }
+        }}
       >
         <DashboardMenu
           activeMenuItem={activeMenuItem}

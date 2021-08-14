@@ -45,11 +45,12 @@ function Navbar(props) {
             name="search"
             link
             onClick={() => {
-              console.log('clicked')
               props.history.push("/search", { navbarInput: navbarInput })
             }}
           />
         }
+        onKeyDown={(event) => { if (event.key === 'Enter') {               props.history.push("/search", { navbarInput: navbarInput })
+      }}}
         placeholder="Search..."
         value={navbarInput}
         onChange={onSearchQuery}

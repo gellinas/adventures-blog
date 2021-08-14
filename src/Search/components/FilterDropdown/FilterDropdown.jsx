@@ -50,9 +50,9 @@ function FilterDropdown(props) {
         return (
           <div className="dropdown-option" key={index}>
             <Checkbox
-              label={category.label}
+              label={category}
               onClick={onCategoriesChecked}
-              checked={props.categoriesChecked.includes(category.label)}
+              checked={props.categoriesChecked.includes(category)}
             />
           </div>
         );

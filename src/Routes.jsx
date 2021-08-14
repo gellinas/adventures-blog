@@ -14,7 +14,6 @@ function Routes(props) {
   const [adminToken, setAdminToken] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log('firing')
   }, []);
 
   return (
@@ -28,7 +27,7 @@ function Routes(props) {
         <Route path="/search" component={Search} />
         <Route 
           path="/admin" 
-          render={(props) => <Admin {...props} accessToken={adminToken} />}
+          render={(props) => <Admin {...props} accessToken={adminToken} setAdminToken={setAdminToken}/>}
         />
         <Route path="/adminlogin" component={(props) => <AdminLogin {...props} setAdminToken={setAdminToken} />} />
       </Switch>

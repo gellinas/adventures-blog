@@ -28,7 +28,6 @@ function Search(props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(async () => {
-    console.log('hererer')
     if (!get(props.location.state, "navbarInput", undefined)) {
       setAdventureData(await getAdventures());
     }
@@ -36,13 +35,11 @@ function Search(props) {
 
   useEffect(async () => {
     if (get(props.location.state, "carouselCategory", undefined)) {
-      console.log('here filter')
       setSearchQuery(props.location.state.carouselCategory);
 
       const searchedAdventures = await queryForAdventures(get(props.location.state, "carouselCategory", undefined))
       setSearchResult(searchedAdventures);
     } else if (get(props.location.state, "blogPostCardTag", undefined)) {
-      console.log('here filter')
       setSearchQuery(props.location.state.blogPostCardTag);
 
       const searchedAdventures = await queryForAdventures(get(props.location.state, "blogPostCardTag", undefined))
@@ -253,7 +250,6 @@ function Search(props) {
     }
   };
 
-  console.log(adventureData)
   return (
     <div className="search-container">
       <Navbar

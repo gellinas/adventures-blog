@@ -36,6 +36,12 @@ function Home(props) {
           wrapper: {
             overflow: isEmpty(adventureData) ? "hidden" : "unset",
           },
+          overlay: (base) => {
+            return {
+              ...base,
+              background: '#2b2b2b',
+            }
+          }
         }}
       >
         <Navbar {...props} />

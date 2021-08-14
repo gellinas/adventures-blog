@@ -11,12 +11,10 @@ function AdminLogin(props) {
 
   const logonAdmin = async () => {
     const response = await loginAdmin({ email: usernameField, password: passwordField });
-    console.log(response);
-    await refreshLogin({});
+    // await refreshLogin({});
     if (response.access_token) {
       props.setAdminToken(response.access_token);
-      console.log(props);
-      props.history.push("/admin");
+      props.history.push("/admin", { 'accessToken': response.access_token});
     } else {
       props.history.push('/')
     }

@@ -25,6 +25,7 @@ function PhotographyForm(props) {
         location: props.location,
         orientation: props.orientation,
         draft: false,
+        id: props.selectedPhoto.id,
       };
       response = await updatePhoto(photo);
     } else {
@@ -39,7 +40,6 @@ function PhotographyForm(props) {
       response = await publishPhoto(photo);
     }
     setConfirmPostPhoto(false);
-    console.log(response);
   };
 
   const onSaveAsDraftClick = async () => {
@@ -65,7 +65,6 @@ function PhotographyForm(props) {
       };
       response = await publishPhoto(photo);
     }
-    console.log(response);
   };
 
   const onDeleteClick = async () => {
@@ -78,7 +77,6 @@ function PhotographyForm(props) {
     };
     const response = await deletePhoto(photo);
     setConfirmDelete(false);
-    console.log(response);
   };
 
   return (
