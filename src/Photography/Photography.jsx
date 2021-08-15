@@ -11,6 +11,7 @@ import { Button, Icon, Ref, Sticky, Rail } from "semantic-ui-react";
 
 function Photography(props) {
   const [photoData, setPhotoData] = useState([]);
+  const [photoSet, setPhotoSet] = useState(1);
 
   useEffect(async () => {
     setPhotoData(await getPhotos());
@@ -26,18 +27,30 @@ function Photography(props) {
           <div className="photography-header">Photography Archive</div>
           <div className="photo-images-container">
             {photoData.map((item, index) => {
-              return (
-                <div key={index}>
-                  <PhotographyImage
-                    photoData={item}
-                    index={index}
-                    {...props}
-                    size="big"
-                  />
-                </div>
-              );
+              if (index < photoSet * 16) {
+                return (
+                  <div key={index}>
+                    <PhotographyImage
+                      photoData={item}
+                      index={index}
+                      {...props}
+                      size="big"
+                    />
+                  </div>
+                );
+              }
             })}
           </div>
+
+          <div className="load-more">
+            <Button
+              className="load-more-photos"
+              onClick={() => setPhotoSet(photoSet + 1)}
+            >
+              Load More
+            </Button>
+          </div>
+
           <Rail className="scroll-to-top-rail" internal position="right">
             <Sticky context={refContainer} pushing>
               <Button
