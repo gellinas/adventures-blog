@@ -102,8 +102,8 @@ const publishAdventure = async (adventure) => {
     method: "POST",
     credentials: "include",
     headers: {
-      content_type: "application/json",
-      "X-CSRF-TOKEN": Cookies.get("csrf_refresh_token"),
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${Cookies.get("refresh_token")}`,
     },
     body: JSON.stringify(adventure),
   });
@@ -122,8 +122,8 @@ const publishPhoto = async (photo) => {
     method: "POST",
     credentials: "include",
     headers: {
-      content_type: "application/json",
-      "X-CSRF-TOKEN": Cookies.get("csrf_refresh_token"),
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${Cookies.get("refresh_token")}`,
     },
     body: JSON.stringify(photo),
   });
@@ -143,7 +143,7 @@ const updateAdventure = async (adventure) => {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRF-TOKEN": Cookies.get("csrf_refresh_token"),
+      "Authorization": `Bearer ${Cookies.get("refresh_token")}`,
     },
     body: JSON.stringify(adventure),
   });
@@ -163,7 +163,7 @@ const updatePhoto = async (photo) => {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRF-TOKEN": Cookies.get("csrf_refresh_token"),
+      "Authorization": `Bearer ${Cookies.get("refresh_token")}`,
     },
     body: JSON.stringify(photo),
   });
@@ -218,6 +218,9 @@ const loginAdmin = async (props) => {
     body: JSON.stringify(props),
   });
   data = await response.json();
+  Cookies.set('access_token', data.access_token );
+  Cookies.set('refresh_token', data.refresh_token);
+
   // }
   return data;
 };
@@ -232,7 +235,7 @@ const refreshLogin = async (accessToken) => {
     credentials: "include",
     method: "POST",
     headers: {
-      "X-CSRF-TOKEN": Cookies.get("csrf_refresh_token"),
+      "Authorization": `Bearer ${Cookies.get("refresh_token")}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(),
