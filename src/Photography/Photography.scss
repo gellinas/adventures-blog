@@ -25,6 +25,18 @@
       }
     }
   }
+
+  .load-more {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+
+    .ui.button.load-more-photos {
+      background-color: #0b090a;
+      color: #ffffff;
+    }
+  }
+
   .ui.icon.button.return-to-top {
     margin: 1em;
     padding: 0.75em 1em 0.75em 1em;
@@ -111,6 +123,18 @@
         }
       }
     }
+
+    .load-more {
+      display: flex;
+      justify-content: center;
+      margin: 1em;
+
+      .ui.button.load-more-photos {
+        background-color: #0b090a;
+        color: #ffffff;
+      }
+    }
+
     .ui.icon.button.return-to-top {
       margin: 1em;
       padding: 0.5em 0.75em 0.5em 0.75em;
