@@ -94,9 +94,9 @@ function BlogPostForm(props) {
   const categoriesOptions = () => {
     return categories.map((category, index) => {
       return {
-        key: category.label,
-        value: category.label,
-        text: category.label,
+        key: category,
+        value: category,
+        text: category,
       };
     });
   };

@@ -16,9 +16,8 @@ function Search(props) {
   const [searchResult, setSearchResult] = useState([]);
   const [filterCategoryIcon, setFilterCategoryIcon] = useState("chevron down");
   const [filterTagIcon, setFilterTagIcon] = useState("chevron down");
-  const [isCategoriesFilterActive, setIsCategoriesFilterActive] = useState(
-    false
-  );
+  const [isCategoriesFilterActive, setIsCategoriesFilterActive] =
+    useState(false);
   const [isTagsFilterActive, setIsTagsFilterActive] = useState(false);
   const [categoriesChecked, setCategoriesChecked] = useState([]);
   const [tagsChecked, setTagsChecked] = useState([]);
@@ -35,10 +34,14 @@ function Search(props) {
 
   useEffect(async () => {
     if (get(props.location.state, "carouselCategory", undefined)) {
-      setSearchQuery(props.location.state.carouselCategory);
-
-      const searchedAdventures = await queryForAdventures(get(props.location.state, "carouselCategory", undefined))
-      setSearchResult(searchedAdventures);
+      const filterByCategory = adventureData.filter((blogPostData, index) =>
+        blogPostData.categories.includes(
+          get(props.location.state, "carouselCategory", undefined)
+        )
+      );
+      setSearchResult(filterByCategory);
+      setClearFiltersVisible(true);
+      setApplyFiltersVisible(true);
     } else if (get(props.location.state, "blogPostCardTag", undefined)) {
       setSearchQuery(props.location.state.blogPostCardTag);
 

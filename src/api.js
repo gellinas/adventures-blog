@@ -51,7 +51,15 @@ const getCategories = async () => {
       data = dummyCategories;
   } else {
     const response = await fetch(url, { method: "GET" });
-    data = await response.json();
+    data = ['Travel',
+        'Food',
+        'Adventures Close to Home',
+        'Asia',
+        'Europe',
+        'North America',
+        'Film',
+        'Activities'
+    ];
   }
   return data;
 };

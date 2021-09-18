@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import LoadingOverlay from "react-loading-overlay";
-import SkewLoader from "react-spinners/SkewLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import DashboardMenu from "./components/DashboardMenu/DashboardMenu.jsx";
 import AddPhotography from "./components/ManagePhotography/AddPhotography/AddPhotography.jsx";
@@ -53,7 +53,7 @@ function Admin(props) {
     <div className="admin-page-container">
       <LoadingOverlay
         active={!props.accessToken || fetchingNewAccessToken}
-        spinner={<SkewLoader color="#335B43" size="55px" />}
+        spinner={<PropagateLoader color="#335B43" size="20px" />}
         styles={{
           wrapper: {
             width: '100%'
