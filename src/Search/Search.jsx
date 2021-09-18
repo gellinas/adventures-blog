@@ -34,6 +34,10 @@ function Search(props) {
 
   useEffect(async () => {
     if (get(props.location.state, "carouselCategory", undefined)) {
+      setSearchQuery(props.location.state.carouselCategory);
+
+      const searchedAdventures = await queryForAdventures(get(props.location.state, "carouselCategory", undefined))
+      setSearchResult(searchedAdventures);
       const filterByCategory = adventureData.filter((blogPostData, index) =>
         blogPostData.categories.includes(
           get(props.location.state, "carouselCategory", undefined)
@@ -239,6 +243,7 @@ function Search(props) {
   const onClearFiltersClick = () => {
     setTagsChecked([]);
     setCategoriesChecked([]);
+    setSearchQuery('')
     setClearFiltersVisible(false);
     setApplyFiltersVisible(false);
   };
