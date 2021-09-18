@@ -118,7 +118,9 @@ function BlogPostForm(props) {
 
   const onPostToBlogClick = async () => {
     let response;
+    console.log(props.selectedPost)
     if (props.selectedPost.id) {
+      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -154,6 +156,7 @@ function BlogPostForm(props) {
   const onSaveAsDraftClick = async () => {
     let response;
     if (props.selectedPost.id) {
+      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -165,9 +168,11 @@ function BlogPostForm(props) {
         categories: props.postCategories,
         tags: props.postTags,
         draft: true,
+        id: props.selectedPost.id,
       };
       response = await updateAdventure(blogPost);
     } else {
+      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,

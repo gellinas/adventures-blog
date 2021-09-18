@@ -47,7 +47,6 @@ function Home(props) {
         <Navbar {...props} />
         <div className="home-content">
           <HeroHeader />
-          <Image src="../Assets/AboutUs.jpeg" />
           <div className="recent-adventures-section">
             <div className="section-title">Recent Adventures</div>
             <FeaturedBlogPostCard latestPost={latestPost} {...props} />
