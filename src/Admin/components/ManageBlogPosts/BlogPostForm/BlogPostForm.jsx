@@ -94,9 +94,9 @@ function BlogPostForm(props) {
   const categoriesOptions = () => {
     return categories.map((category, index) => {
       return {
-        key: category.label,
-        value: category.label,
-        text: category.label,
+        key: category,
+        value: category,
+        text: category,
       };
     });
   };
@@ -118,7 +118,9 @@ function BlogPostForm(props) {
 
   const onPostToBlogClick = async () => {
     let response;
+    console.log(props.selectedPost)
     if (props.selectedPost.id) {
+      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -130,6 +132,7 @@ function BlogPostForm(props) {
         categories: props.postCategories,
         tags: props.postTags,
         draft: false,
+        id: props.selectedPost.id,
       };
       response = await updateAdventure(blogPost);
     } else {
@@ -148,12 +151,12 @@ function BlogPostForm(props) {
       response = await publishAdventure(blogPost);
     }
     setConfirmPostToBlog(false);
-    console.log(response);
   };
 
   const onSaveAsDraftClick = async () => {
     let response;
     if (props.selectedPost.id) {
+      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -165,9 +168,11 @@ function BlogPostForm(props) {
         categories: props.postCategories,
         tags: props.postTags,
         draft: true,
+        id: props.selectedPost.id,
       };
       response = await updateAdventure(blogPost);
     } else {
+      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -182,7 +187,6 @@ function BlogPostForm(props) {
       };
       response = await publishAdventure(blogPost);
     }
-    console.log(response);
   };
 
   const onDeleteClick = async () => {
@@ -199,7 +203,6 @@ function BlogPostForm(props) {
     };
     const response = await deleteAdventure(blogPost);
     setConfirmDelete(false);
-    console.log(response);
   };
 
   return (

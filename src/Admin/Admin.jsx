@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import LoadingOverlay from "react-loading-overlay";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import DashboardMenu from "./components/DashboardMenu/DashboardMenu.jsx";
 import AddPhotography from "./components/ManagePhotography/AddPhotography/AddPhotography.jsx";
@@ -6,11 +8,28 @@ import CreateBlogPost from "./components/ManageBlogPosts/CreateBlogPost/CreateBl
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import EditBlogPost from "./components/ManageBlogPosts/EditBlogPost/EditBlogPost.jsx";
 import EditPhotography from "./components/ManagePhotography/EditPhotography/EditPhotography.jsx";
+import { refreshLogin } from "../api";
+import Cookies from 'js-cookie';
 
 import "./Admin.scss";
 
 function Admin(props) {
   const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
+  const [fetchingNewAccessToken, setFetchingNewAccessToken] = useState(false);
+  // const [accessToken, setAccessToken] = useState(false);
+
+  useEffect(async () => {
+    if (!props.accessToken || !props.location.state.accessToken) {
+      setFetchingNewAccessToken(true)
+      const response = await refreshLogin(props.accessToken);
+      if (response.access_token) {
+        props.setAdminToken(response.access_token);
+        setFetchingNewAccessToken(false)
+      } else {
+        props.history.push('/')
+      }
+    }
+  }, []);
 
   const handleActiveComponent = () => {
     if (activeMenuItem === "dashboard") {
@@ -32,11 +51,27 @@ function Admin(props) {
 
   return (
     <div className="admin-page-container">
-      <DashboardMenu
-        activeMenuItem={activeMenuItem}
-        setActiveMenuItem={setActiveMenuItem}
-      />
-      <div className="active-component">{handleActiveComponent()}</div>
+      <LoadingOverlay
+        active={!props.accessToken || fetchingNewAccessToken}
+        spinner={<PropagateLoader color="#335B43" size="20px" />}
+        styles={{
+          wrapper: {
+            width: '100%'
+          },
+          overlay: (base) => {
+            return {
+              ...base,
+              background: '#2b2b2b',
+            }
+          }
+        }}
+      >
+        <DashboardMenu
+          activeMenuItem={activeMenuItem}
+          setActiveMenuItem={setActiveMenuItem}
+        />
+        <div className="active-component">{handleActiveComponent()}</div>
+      </LoadingOverlay>
     </div>
   );
 }

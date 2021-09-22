@@ -61,14 +61,14 @@ function Carousel(props) {
                   key={index}
                   onClick={() =>
                     props.history.push("/search", {
-                      carouselCategory: category.label,
+                      carouselCategory: category,
                     })
                   }
                 >
-                  <Image src={category.image} size="tiny" />
+                  <Image src={`https://adventure-categories.s3.amazonaws.com/asia.jpg`} size="tiny" />
                   <div className="image-overlay">
                     <div className="image-text">
-                      <div className="category-name">{category.label}</div>
+                      <div className="category-name">{category}</div>
                     </div>
                   </div>
                 </div>

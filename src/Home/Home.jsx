@@ -7,9 +7,9 @@ import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlo
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
 import PhotographyImage from "../components/PhotographyImage/PhotographyImage.jsx";
 
-import { Button } from "semantic-ui-react";
+import { Button,Image } from "semantic-ui-react";
 import LoadingOverlay from "react-loading-overlay";
-import SkewLoader from "react-spinners/SkewLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import { isEmpty } from "lodash";
 
 import { getAdventures, getPhotos } from "../api.js";
@@ -31,11 +31,17 @@ function Home(props) {
     <div className="home-container">
       <LoadingOverlay
         active={isEmpty(adventureData)}
-        spinner={<SkewLoader color="#335B43" size="55px" />}
+        spinner={<PropagateLoader color="#335B43" size="20px" />}
         styles={{
           wrapper: {
             overflow: isEmpty(adventureData) ? "hidden" : "unset",
           },
+          overlay: (base) => {
+            return {
+              ...base,
+              background: '#2b2b2b',
+            }
+          }
         }}
       >
         <Navbar {...props} />

@@ -10,6 +10,7 @@ function Navbar(props) {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const onSearchQuery = (event) => {
+    console.log(event.target.value);
     if (props.setSearchQuery) {
       props.setSearchQuery(event.target.value);
     }
@@ -63,6 +64,11 @@ function Navbar(props) {
             placeholder="Search..."
             value={navbarInput}
             onChange={onSearchQuery}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                props.history.push("/search", { navbarInput: navbarInput });
+              }
+            }}
           />
         </div>
       </div>

@@ -20,11 +20,11 @@ function CategoryDropdown(props) {
           {categories.map((category, index) => {
             return (
               <Dropdown.Item
-                text={category.label}
+                text={category}
                 key={category.value}
                 onClick={() =>
                   props.history.push("/search", {
-                    carouselCategory: category.label,
+                    carouselCategory: category,
                   })
                 }
               />

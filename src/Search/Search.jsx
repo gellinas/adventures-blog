@@ -7,7 +7,7 @@ import Footer from "../components/Footer/Footer.jsx";
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
 import FilterDropdown from "./components/FilterDropdown/FilterDropdown.jsx";
 
-import { getAdventures } from "../api.js";
+import { getAdventures, queryForAdventures } from "../api.js";
 
 import "./Search.scss";
 
@@ -27,11 +27,17 @@ function Search(props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(async () => {
-    setAdventureData(await getAdventures());
+    if (!get(props.location.state, "navbarInput", undefined)) {
+      setAdventureData(await getAdventures());
+    }
   }, []);
 
   useEffect(async () => {
     if (get(props.location.state, "carouselCategory", undefined)) {
+      setSearchQuery(props.location.state.carouselCategory);
+
+      const searchedAdventures = await queryForAdventures(get(props.location.state, "carouselCategory", undefined))
+      setSearchResult(searchedAdventures);
       const filterByCategory = adventureData.filter((blogPostData, index) =>
         blogPostData.categories.includes(
           get(props.location.state, "carouselCategory", undefined)
@@ -41,21 +47,21 @@ function Search(props) {
       setClearFiltersVisible(true);
       setApplyFiltersVisible(true);
     } else if (get(props.location.state, "blogPostCardTag", undefined)) {
-      const filterByTagClick = adventureData.filter((blogPostData, index) =>
-        blogPostData.tags.includes(
-          get(props.location.state, "blogPostCardTag", undefined)
-        )
-      );
-      setSearchResult(filterByTagClick);
-    } else if (get(props.location.state, "navbarQuery", undefined)) {
-      setSearchQuery(props.location.state.navbarQuery);
+      setSearchQuery(props.location.state.blogPostCardTag);
+
+      const searchedAdventures = await queryForAdventures(get(props.location.state, "blogPostCardTag", undefined))
+      setSearchResult(searchedAdventures);
+    } else if (get(props.location.state, "navbarInput", undefined) && get(props.location.state, "navbarInput", undefined) !== searchQuery ) {
+      setSearchQuery(props.location.state.navbarInput);
+      const searchedAdventures = await queryForAdventures(get(props.location.state, "navbarInput", undefined))
+      setSearchResult(searchedAdventures);
     } else {
-      setSearchResult(adventureData);
+      setSearchResult(adventureData)
     }
   }, [
     get(props.location.state, "carouselCategory", undefined),
     get(props.location.state, "blogPostCardTag", undefined),
-    get(props.location.state, "navbarQuery", undefined),
+    get(props.location.state, "navbarInput", undefined),
     adventureData,
   ]);
 
@@ -237,6 +243,7 @@ function Search(props) {
   const onClearFiltersClick = () => {
     setTagsChecked([]);
     setCategoriesChecked([]);
+    setSearchQuery('')
     setClearFiltersVisible(false);
     setApplyFiltersVisible(false);
   };
@@ -255,11 +262,11 @@ function Search(props) {
     <div className="search-container">
       <Navbar
         {...props}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
+        // searchQuery={searchQuery}
+        // setSearchQuery={setSearchQuery}
       />
       <div className="search-content">
-        <div className="search-result-title">Results for " "</div>
+        {searchQuery && (<div className="search-result-title">{`Results for "${searchQuery}"`}</div>)}
 
         <div className="search-menu">
           <div>{searchResult.length} Adventures</div>
