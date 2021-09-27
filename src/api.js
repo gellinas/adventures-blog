@@ -44,6 +44,18 @@ const getPhotos = async () => {
   return data.filter(val => !val.draft);
 };
 
+const getUploadedPhotos = async () => {
+    const url = "http://localhost:5000/photos/uploaded";
+    let data;
+    if (dummyData) {
+        data = dummyPhotos;
+    } else {
+      const response = await fetch(url, { method: "GET" });
+      data = await response.json();
+    }
+    return data;
+  };
+
 const getCategories = async () => {
   const url = "http://52.91.134.225/services/quest/adventures/categories";
   let data;
@@ -55,10 +67,10 @@ const getCategories = async () => {
         'Food',
         'Adventures Close to Home',
         'Asia',
-        'Europe',
         'North America',
         'Film',
-        'Activities'
+        'Activities',
+        'Europe'
     ];
   }
   return data;
@@ -268,4 +280,5 @@ export {
   queryForAdventures,
   loginAdmin,
   refreshLogin,
+  getUploadedPhotos,
 };

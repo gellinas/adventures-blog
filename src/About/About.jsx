@@ -22,12 +22,11 @@ function About(props) {
           <div className="about-header">Our Story</div>
           <Container text fluid className="our-story-container">
             <p>
-              We share a love for food, photography, and exploring new spaces.
-              We took our first trip together in 2017 and have been exploring
-              together ever since. We believe adventures can be found anywhere,
-              from neighborhoods close to home or cities across the globe. After
-              a few years of traveling together, we decided to create this space
-              to archive our memories and adventures.
+              Hello fellow adventurers! After a few years of traveling together,
+              we decided to create this space to archive our memories and
+              adventures. We share a love for food, photography, and exploring
+              new spaces. We believe adventures can be found anywhere, from
+              neighborhoods close to home or cities across the globe.
             </p>
             <p>
               A few of our shared hobbies include: bouldering and rock climbing,

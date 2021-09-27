@@ -65,7 +65,7 @@ function Carousel(props) {
                     })
                   }
                 >
-                  <Image src={`https://adventure-categories.s3.amazonaws.com/asia.jpg`} size="tiny" />
+                  <Image src={`https://adventure-categories.s3.amazonaws.com/${category.replaceAll(' ', '-')}.jpg`} size="tiny" style={{height: '100%', width: '100%', objectFit: 'cover'}}/>
                   <div className="image-overlay">
                     <div className="image-text">
                       <div className="category-name">{category}</div>
