@@ -56,7 +56,8 @@ function Admin(props) {
         spinner={<PropagateLoader color="#335B43" size="20px" />}
         styles={{
           wrapper: {
-            width: '100%'
+            width: '100%',
+            display: 'flex'
           },
           overlay: (base) => {
             return {

@@ -27,7 +27,7 @@ function BlogPostCard(props) {
       <Card>
         <div className="blog-post-card-img-holder">
           <Image
-            src={props.blogPostData.main_image}
+            src={`https://adventures-archive.s3.amazonaws.com/${props.blogPostData.main_image}`}
             className="blog-post-card-img"
             onClick={() => {
               props.history.push("/post", { blogPostData: props.blogPostData });

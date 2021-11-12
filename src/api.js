@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 const dummyData = false;
 
-const getAdventures = async () => {
+const getAdventures = async (postView = false) => {
   const url = "http://52.91.134.225/services/quest/adventures/";
   let data;
   if (dummyData) {
@@ -17,7 +17,7 @@ const getAdventures = async () => {
     const response = await fetch(url, { method: "GET" });
     data = await response.json();
   }
-  return data.filter(val => !val.draft);
+  return postView ? data.filter(val => val.draft) : data.filter(val => !val.draft);
 };
 
 const queryForAdventures = async (query = "") => {
@@ -32,7 +32,7 @@ const queryForAdventures = async (query = "") => {
   return data;
 };
 
-const getPhotos = async () => {
+const getPhotos = async (photoView = false) => {
   const url = "http://52.91.134.225/services/quest/photos/";
   let data;
   if (dummyData) {
@@ -41,16 +41,18 @@ const getPhotos = async () => {
     const response = await fetch(url, { method: "GET" });
     data = await response.json();
   }
-  return data.filter(val => !val.draft);
+  return photoView ? data : data.filter(val => !val.draft);
 };
 
 const getUploadedPhotos = async () => {
-    const url = "http://localhost:5000/photos/uploaded";
+    const url = "http://52.91.134.225/services/quest/photos/uploaded";
     let data;
     if (dummyData) {
         data = dummyPhotos;
     } else {
-      const response = await fetch(url, { method: "GET" });
+      const response = await fetch(url, { 
+          method: "GET",
+        });
       data = await response.json();
     }
     return data;
@@ -83,7 +85,24 @@ const getTags = async () => {
       data = dummyTags;
   } else {
     const response = await fetch(url, { method: "GET" });
-    data = await response.json();
+    data = [
+        'Museum',
+        'Art',
+        'Nature',
+        '2021',
+        '2020',
+        '2019',
+        'Film',
+        'Digital',
+        'Coffee',
+        'Cars',
+        'Gardens',
+        'Cherry Blossoms',
+        'Fall',
+        'Spring',
+        'Summer',
+        'Winter'
+    ];
   }
   return data;
 };

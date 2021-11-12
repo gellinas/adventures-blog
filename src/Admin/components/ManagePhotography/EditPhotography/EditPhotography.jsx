@@ -22,7 +22,7 @@ function EditPhotography(props) {
   const [open, setOpen] = useState(false);
 
   useEffect(async () => {
-    setPublishedPhotos(await getPhotos());
+    setPublishedPhotos(await getPhotos(true));
   }, []);
 
   useEffect(() => {

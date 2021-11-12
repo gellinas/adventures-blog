@@ -22,6 +22,7 @@ function EditBlogPost(props) {
   const [selectedDropdownPost, setSelectedDropdownPost] = useState(null);
   const [sections, setSections] = useState([]);
   const [open, setOpen] = useState(false);
+  const [links, setLinks] = useState([]);
 
   useEffect(async () => {
     setPublishedPosts(await getAdventures());
@@ -126,6 +127,8 @@ function EditBlogPost(props) {
         setPostTags={setPostTags}
         postCategories={postCategories}
         setPostCategories={setPostCategories}
+        links={links}
+        setLinks={setLinks}
         sections={sections}
         selectedPost={selectedPublishedPost}
       />

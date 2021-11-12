@@ -74,7 +74,7 @@ function SinglePost(props) {
         <div
           className="header-image-container"
           style={{
-            backgroundImage: `url(${blogPostData.main_image}) `,
+            backgroundImage: `url(https://adventures-archive.s3.amazonaws.com/${blogPostData.main_image}) `,
           }}
         >
           <div className="header-title-container">
@@ -95,7 +95,7 @@ function SinglePost(props) {
                   {item.images.map((image, index) => {
                     return (
                       <div key={index}>
-                        <img src={image.src} className="post-image" />
+                        {image.src && <img src={`https://adventures-archive.s3.amazonaws.com/${image.src}`} className="post-image" />}
                       </div>
                     );
                   })}

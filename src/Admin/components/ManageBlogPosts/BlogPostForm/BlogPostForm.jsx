@@ -14,6 +14,7 @@ import {
   getTags,
   publishAdventure,
   updateAdventure,
+  getUploadedPhotos,
 } from "../../../../api.js";
 
 import "./BlogPostForm.scss";
@@ -25,10 +26,14 @@ function BlogPostForm(props) {
   const [sectionsArray, setSectionsArray] = useState([]);
   const [confirmPostToBlog, setConfirmPostToBlog] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
+  const [link, setLinks] = useState([]);
+  const [numberOfLinks, setNumberOfLinks] = useState(1);
 
   useEffect(async () => {
     setCategories(await getCategories());
     setTags(await getTags());
+    setUploadedPhotos(await getUploadedPhotos());
   }, []);
 
   // Single Section Object Structure
@@ -100,6 +105,16 @@ function BlogPostForm(props) {
       };
     });
   };
+
+  const uploadedPhotosOptions = () => {
+    return uploadedPhotos.map((photo, index) => {
+      return {
+        key: photo,
+        value: photo,
+        text: photo,
+      };
+    });
+  }
 
   const imageOrientationOptions = [
     { key: "portrait", text: "portrait", value: "portrait" },
@@ -220,11 +235,22 @@ function BlogPostForm(props) {
             onChange={(e, data) => props.setSubtitle(data.value)}
           />
         </Form.Group>
-        <Form.Input
+        <Form.Dropdown
           label="Header and Card Image"
+          fluid
+          search
+          selection
+          options={uploadedPhotosOptions()}
           value={props.headerCardImage}
           onChange={(e, data) => props.setHeaderCardImage(data.value)}
         />
+        {props.headerCardImage && <img src={`https://adventures-archive.s3.amazonaws.com/${props.headerCardImage}`} style={{ width: '200px'}} className="post-image" />}
+
+        {/* <Form.Input
+          label="Header and Card Image"
+          value={props.headerCardImage}
+          onChange={(e, data) => props.setHeaderCardImage(data.value)}
+        /> */}
         <Form.Group widths="equal">
           <Form.Input
             label="Date of Adventure"
@@ -269,9 +295,18 @@ function BlogPostForm(props) {
         </Form.Group>
       </Form>
 
+      {/* <Divider horizontal> Links </Divider>
+        {numberOfLinks.map((linkNumber, index) => (
+          <Form.Input
+            label="Link"
+            value={props.links[linkNumber]}
+            onChange={(e, data) => props.setAdventureDate(data.value)}
+          />
+        ))}  */}
+
       <Divider horizontal> Sections </Divider>
 
-      <div className="increment-section-container">
+      <div className="increment-section-container" style={{ marginTop: '25px'}}>
         <div> Number of Sections: </div>
         <Button
           basic
@@ -318,13 +353,18 @@ function BlogPostForm(props) {
               <Grid divided="vertically">
                 <Grid.Row columns={2} divided>
                   <Grid.Column>
-                    <Form.Input
-                      label="Section Image 1"
+                  <Form.Dropdown
+                      label="Uploaded Photos"
+                      fluid
+                      search
+                      selection
+                      options={uploadedPhotosOptions()}
                       value={singleSection.images[0].src}
                       onChange={(e, data) => {
                         updateImageOfSection(index, 0, "src", data.value);
                       }}
                     />
+                    {singleSection.images[0].src && <img src={`https://adventures-archive.s3.amazonaws.com/${singleSection.images[0].src}`} style={{ width: '200px'}} className="post-image" />}
                     <Form.Input
                       label="Image Description"
                       value={singleSection.images[0].description}
@@ -368,13 +408,18 @@ function BlogPostForm(props) {
                   </Grid.Column>
 
                   <Grid.Column>
-                    <Form.Input
-                      label="Section Image 2"
+                    <Form.Dropdown
+                      label="Uploaded Photos"
+                      fluid
+                      search
+                      selection
+                      options={uploadedPhotosOptions()}
                       value={singleSection.images[1].src}
                       onChange={(e, data) => {
                         updateImageOfSection(index, 1, "src", data.value);
                       }}
                     />
+                    {singleSection.images[1].src && <img src={`https://adventures-archive.s3.amazonaws.com/${singleSection.images[1].src}`} style={{ width: '200px'}} className="post-image" />}
                     <Form.Input
                       label="Image Description"
                       value={singleSection.images[1].description}
@@ -422,6 +467,27 @@ function BlogPostForm(props) {
           );
         })}
       </div>
+      <div className="increment-section-container">
+        <div> Number of Sections: </div>
+        <Button
+          basic
+          color="black"
+          compact
+          icon="minus"
+          size="mini"
+          onClick={() => onSubtractSectionClick()}
+        />
+        <div> {numberOfSections} </div>
+        <Button
+          basic
+          color="black"
+          compact
+          icon="add"
+          size="mini"
+          onClick={() => onAddSectionClick()}
+        />
+      </div>
+      <Divider horizontal> Sections </Divider>
 
       <Button
         color="red"

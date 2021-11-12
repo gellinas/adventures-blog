@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Button, Form, Confirm } from "semantic-ui-react";
 
-import { deletePhoto, publishPhoto, updatePhoto } from "../../../../api.js";
+import { deletePhoto, publishPhoto, updatePhoto,   getUploadedPhotos,
+} from "../../../../api.js";
 
 import "./PhotographyForm.scss";
 
 function PhotographyForm(props) {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [confirmPostPhoto, setConfirmPostPhoto] = useState(false);
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
 
+  const uploadedPhotosOptions = () => {
+    return uploadedPhotos.map((photo, index) => {
+      return {
+        key: photo,
+        value: photo,
+        text: photo,
+      };
+    });
+  }
+
+  useEffect(async () => {
+    setUploadedPhotos(await getUploadedPhotos());
+  }, []);
+  
   const imageOrientationOptions = [
     { key: "portrait", text: "portrait", value: "portrait" },
     { key: "landscape", text: "landscape", value: "landscape" },
@@ -82,12 +98,17 @@ function PhotographyForm(props) {
   return (
     <div className="photography-form-container">
       <Form>
-        <Form.Input
+        <Form.Dropdown
           label="Photo"
           placeholder="src"
+          fluid
+          search
+          selection
+          options={uploadedPhotosOptions()}
           value={props.photoSrc}
           onChange={(e, data) => props.setPhotoSrc(data.value)}
         />
+        {props.photoSrc && <img src={`https://adventures-archive.s3.amazonaws.com/${props.photoSrc}`} style={{ width: '200px'}} className="post-image" />}
         <Form.Input
           label="Title"
           value={props.title}

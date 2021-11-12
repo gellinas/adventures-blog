@@ -24,7 +24,7 @@ function FeaturedBlogPostCard(props) {
   return (
     <div className="featured-blog-post-card-container">
       <Image
-        src={props.latestPost.main_image}
+        src={`https://adventures-archive.s3.amazonaws.com/${props.latestPost.main_image}`}
         className="featrued-card-img"
         onClick={() => {
           props.history.push("/post", { blogPostData: props.latestPost });
