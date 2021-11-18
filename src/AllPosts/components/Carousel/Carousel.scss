@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 1em;
 
   .category-slider {
     display: flex;
@@ -11,11 +12,11 @@
     .categories-container {
       display: flex;
       flex-direction: row;
-      width: 83vw;
+      width: 75vw;
 
       .category-container {
         position: relative;
-        margin-right: 0.25em;
+        margin: 0 0.5em;
         cursor: pointer;
 
         .ui.image {
@@ -50,7 +51,7 @@
 
         .category-name {
           color: white;
-          font-size: 25px;
+          font-size: 23px;
           position: absolute;
           line-height: 1.25em;
           top: 50%;
