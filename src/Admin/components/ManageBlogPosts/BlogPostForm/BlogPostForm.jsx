@@ -148,6 +148,7 @@ function BlogPostForm(props) {
         tags: props.postTags,
         draft: false,
         id: props.selectedPost.id,
+        link: props.link,
       };
       response = await updateAdventure(blogPost);
     } else {
@@ -161,6 +162,7 @@ function BlogPostForm(props) {
         post_section: sectionsArray,
         categories: props.postCategories,
         tags: props.postTags,
+        link: props.link,
         draft: false,
       };
       response = await publishAdventure(blogPost);
@@ -182,6 +184,7 @@ function BlogPostForm(props) {
         post_section: sectionsArray,
         categories: props.postCategories,
         tags: props.postTags,
+        link: props.link,
         draft: true,
         id: props.selectedPost.id,
       };
@@ -198,6 +201,7 @@ function BlogPostForm(props) {
         post_section: sectionsArray,
         categories: props.postCategories,
         tags: props.postTags,
+        link: props.link,
         draft: true,
       };
       response = await publishAdventure(blogPost);
@@ -215,6 +219,7 @@ function BlogPostForm(props) {
       post_section: sectionsArray,
       categories: props.postCategories,
       tags: props.postTags,
+      link: props.link,
     };
     const response = await deleteAdventure(blogPost);
     setConfirmDelete(false);
@@ -270,6 +275,11 @@ function BlogPostForm(props) {
           label="Summary for Card"
           value={props.cardSummary}
           onChange={(e, data) => props.setCardSummary(data.value)}
+        />
+        <Form.Input
+          label="Link"
+          value={props.link}
+          onChange={(e, data) => props.setLink(data.value)}
         />
         <Form.Group widths="equal">
           <Form.Dropdown

@@ -22,7 +22,7 @@ function EditBlogPost(props) {
   const [selectedDropdownPost, setSelectedDropdownPost] = useState(null);
   const [sections, setSections] = useState([]);
   const [open, setOpen] = useState(false);
-  const [links, setLinks] = useState([]);
+  const [link, setLink] = useState("");
 
   useEffect(async () => {
     setPublishedPosts(await getAdventures());
@@ -41,6 +41,7 @@ function EditBlogPost(props) {
       setPostTags(selectedPublishedPost.tags);
       setPostCategories(selectedPublishedPost.categories);
       setSections(selectedPublishedPost.post_section);
+      setLink(selectedPublishedPost.link);
     }
   }, [selectedPublishedPost]);
 
@@ -77,6 +78,7 @@ function EditBlogPost(props) {
     setPostTags(selectedPublishedPost.tags);
     setPostCategories(selectedPublishedPost.categories);
     setSections(selectedPublishedPost.post_section);
+    setLink(selectedPublishedPost.link);
     setOpen(false);
   };
 
@@ -131,6 +133,8 @@ function EditBlogPost(props) {
         setLinks={setLinks}
         sections={sections}
         selectedPost={selectedPublishedPost}
+        link={link}
+        setLink={setLink}
       />
     </div>
   );

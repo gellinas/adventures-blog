@@ -15,6 +15,7 @@ function CreateBlogPost(props) {
   const [adventureDate, setAdventureDate] = useState("");
   const [datePosted, setDatePosted] = useState("");
   const [cardSummary, setCardSummary] = useState("");
+  const [link, setLink] = useState("");
   const [postTags, setPostTags] = useState([]);
   const [postCategories, setPostCategories] = useState([]);
   const [selectedDraft, setSelectedDraft] = useState({});
@@ -42,6 +43,7 @@ function CreateBlogPost(props) {
       setPostTags(selectedDraft.tags);
       setPostCategories(selectedDraft.categories);
       setSections(selectedDraft.post_section);
+      setLink(selectedDraft.link);
     }
   }, [selectedDraft]);
 
@@ -78,6 +80,7 @@ function CreateBlogPost(props) {
     setPostTags(selectedDraft.tags);
     setPostCategories(selectedDraft.categories);
     setSections(selectedDraft.post_section);
+    setLink(selectedDraft.link);
     setOpen(false);
   };
 
@@ -130,6 +133,8 @@ function CreateBlogPost(props) {
         setPostCategories={setPostCategories}
         sections={sections}
         selectedPost={selectedDraft}
+        link={link}
+        setLink={setLink}
       />
     </div>
   );
