@@ -29,7 +29,7 @@ const queryForAdventures = async (query = "") => {
     body: JSON.stringify({ query }),
   });
   data = await response.json();
-  return data;
+  return data.filter(val => val.draft);
 };
 
 const getPhotos = async (photoView = false) => {

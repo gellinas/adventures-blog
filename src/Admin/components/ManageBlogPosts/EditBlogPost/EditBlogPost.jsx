@@ -129,8 +129,6 @@ function EditBlogPost(props) {
         setPostTags={setPostTags}
         postCategories={postCategories}
         setPostCategories={setPostCategories}
-        links={links}
-        setLinks={setLinks}
         sections={sections}
         selectedPost={selectedPublishedPost}
         link={link}
