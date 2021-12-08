@@ -17,7 +17,7 @@ const getAdventures = async (postView = false) => {
     const response = await fetch(url, { method: "GET" });
     data = await response.json();
   }
-  return postView ? data.filter(val => val.draft) : data.filter(val => !val.draft);
+  return postView ? data.filter(val => val.draft).reverse() : data.filter(val => !val.draft).reverse();
 };
 
 const queryForAdventures = async (query = "") => {
@@ -29,7 +29,7 @@ const queryForAdventures = async (query = "") => {
     body: JSON.stringify({ query }),
   });
   data = await response.json();
-  return data.filter(val => val.draft);
+  return data.filter(val => !val.draft).reverse();
 };
 
 const getPhotos = async (photoView = false) => {
@@ -41,7 +41,7 @@ const getPhotos = async (photoView = false) => {
     const response = await fetch(url, { method: "GET" });
     data = await response.json();
   }
-  return photoView ? data : data.filter(val => !val.draft);
+  return photoView ? data.filter(val => val.draft).reverse() : data.filter(val => !val.draft).reverse();
 };
 
 const getUploadedPhotos = async () => {
