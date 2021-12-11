@@ -93,6 +93,18 @@
           line-height: 24px;
         }
       }
+      .post-image-single-container {
+        display: grid;
+        grid-template-columns: 100%;
+        .image-wrapper {
+          display: grid;
+          justify-content: center;
+        }
+        .post-image {
+          width: 40vw;
+          margin: 1em;
+        }
+      }
       .post-image-container {
         display: grid;
         grid-template-columns: 50% 50%;
