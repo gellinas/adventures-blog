@@ -7,7 +7,7 @@ import FeaturedBlogPostCard from "../components/FeaturedBlogPostCard/FeaturedBlo
 import BlogPostCard from "../components/BlogPostCard/BlogPostCard.jsx";
 import PhotographyImage from "../components/PhotographyImage/PhotographyImage.jsx";
 
-import { Button,Image } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import LoadingOverlay from "react-loading-overlay";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { isEmpty } from "lodash";
@@ -39,9 +39,9 @@ function Home(props) {
           overlay: (base) => {
             return {
               ...base,
-              background: '#2b2b2b',
-            }
-          }
+              background: "#2b2b2b",
+            };
+          },
         }}
       >
         <Navbar {...props} />
