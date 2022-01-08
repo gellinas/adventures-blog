@@ -95,7 +95,12 @@ function SinglePost(props) {
                   {item.images.map((image, index) => {
                     return (
                       <div key={index}>
-                        {image.src && <img src={`https://adventures-archive.s3.amazonaws.com/${image.src}`} className="post-image" />}
+                        {image.src && (
+                          <img
+                            src={`https://adventures-archive.s3.amazonaws.com/${image.src}`}
+                            className="post-image"
+                          />
+                        )}
                       </div>
                     );
                   })}

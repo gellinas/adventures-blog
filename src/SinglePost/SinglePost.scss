@@ -167,7 +167,11 @@
 
       .tags-container {
         align-self: center;
-        margin: 1em 1em;
+        margin: 1em 3em;
+
+        .label {
+          margin: 0.25em;
+        }
       }
 
       .more-posts {
