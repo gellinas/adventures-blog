@@ -91,11 +91,22 @@ function SinglePost(props) {
                   <div className="body-title">{item.section_title}</div>
                   <div className="body-text">{item.section_text}</div>
                 </div>
-                <div className={item.images.filter(image => image.src !== '').length === 2 ? "post-image-container" : "post-image-single-container"}>
+                <div
+                  className={
+                    item.images.filter((image) => image.src !== "").length === 2
+                      ? "post-image-container"
+                      : "post-image-single-container"
+                  }
+                >
                   {item.images.map((image, index) => {
                     return (
                       <div key={index} className="image-wrapper">
-                        {image.src && <img src={`https://adventures-archive.s3.amazonaws.com/${image.src}`} className="post-image" />}
+                        {image.src && (
+                          <img
+                            src={`https://adventures-archive.s3.amazonaws.com/${image.src}`}
+                            className="post-image"
+                          />
+                        )}
                       </div>
                     );
                   })}
