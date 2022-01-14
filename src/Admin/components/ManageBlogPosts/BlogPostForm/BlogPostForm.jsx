@@ -203,6 +203,7 @@ function BlogPostForm(props) {
       };
       response = await publishAdventure(blogPost);
     }
+    setConfirmPostDraftToBlog(false)
   };
 
   const onDeleteClick = async () => {

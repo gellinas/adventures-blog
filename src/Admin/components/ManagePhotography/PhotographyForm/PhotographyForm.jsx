@@ -83,6 +83,7 @@ function PhotographyForm(props) {
       };
       response = await publishPhoto(photo);
     }
+    setConfirmDraftPhoto(false)
   };
 
   const onDeleteClick = async () => {
