@@ -25,6 +25,7 @@ function BlogPostForm(props) {
   const [numberOfSections, setNumberOfSections] = useState(1);
   const [sectionsArray, setSectionsArray] = useState([]);
   const [confirmPostToBlog, setConfirmPostToBlog] = useState(false);
+  const [confirmPostDraftToBlog, setConfirmPostDraftToBlog] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [uploadedPhotos, setUploadedPhotos] = useState([]);
   const [link, setLinks] = useState([]);
@@ -133,9 +134,7 @@ function BlogPostForm(props) {
 
   const onPostToBlogClick = async () => {
     let response;
-    console.log(props.selectedPost)
     if (props.selectedPost.id) {
-      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -173,7 +172,6 @@ function BlogPostForm(props) {
   const onSaveAsDraftClick = async () => {
     let response;
     if (props.selectedPost.id) {
-      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -190,7 +188,6 @@ function BlogPostForm(props) {
       };
       response = await updateAdventure(blogPost);
     } else {
-      console.log(props.selectedPost)
       const blogPost = {
         title: props.title,
         main_image: props.headerCardImage,
@@ -515,7 +512,15 @@ function BlogPostForm(props) {
       <Button
         color="yellow"
         content="Save as Draft"
-        onClick={onSaveAsDraftClick}
+        onClick={() => setConfirmPostDraftToBlog(true)}
+      />
+
+      <Confirm
+        open={confirmPostDraftToBlog}
+        content="Are you sure you want to post adventure as draft?"
+        confirmButton="Confirm"
+        onCancel={() => setConfirmPostDraftToBlog(false)}
+        onConfirm={onSaveAsDraftClick}
       />
 
       <Button

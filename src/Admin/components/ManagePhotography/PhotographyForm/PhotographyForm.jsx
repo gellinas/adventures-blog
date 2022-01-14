@@ -10,6 +10,7 @@ import "./PhotographyForm.scss";
 function PhotographyForm(props) {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [confirmPostPhoto, setConfirmPostPhoto] = useState(false);
+  const [confirmDraftPhoto, setConfirmDraftPhoto] = useState(false);
   const [uploadedPhotos, setUploadedPhotos] = useState([]);
 
   const uploadedPhotosOptions = () => {
@@ -62,6 +63,7 @@ function PhotographyForm(props) {
     let response;
     if (props.selectedPhoto.id) {
       const photo = {
+        id: props.selectedPhoto.id,
         src: props.photoSrc,
         title: props.title,
         date: props.photoDate,
@@ -148,7 +150,15 @@ function PhotographyForm(props) {
         <Button
           color="yellow"
           content="Save as Draft"
-          onClick={onSaveAsDraftClick}
+          onClick={() => setConfirmDraftPhoto(true)}
+        />
+
+        <Confirm
+          open={confirmDraftPhoto}
+          content="Are you sure you want to make this photo a draft?"
+          confirmButton="Confirm"
+          onCancel={() => setConfirmDraftPhoto(false)}
+          onConfirm={onSaveAsDraftClick}
         />
 
         <Button

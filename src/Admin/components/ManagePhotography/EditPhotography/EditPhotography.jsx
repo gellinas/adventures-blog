@@ -22,7 +22,7 @@ function EditPhotography(props) {
   const [open, setOpen] = useState(false);
 
   useEffect(async () => {
-    setPublishedPhotos(await getPhotos(true));
+    setPublishedPhotos(await getPhotos());
   }, []);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function EditPhotography(props) {
     return {
       key: index,
       value: index,
-      text: photo.title,
+      text: photo.src,
       ...photo,
     };
   });

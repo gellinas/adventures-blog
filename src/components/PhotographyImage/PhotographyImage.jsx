@@ -23,7 +23,7 @@ function PhotographyImage(props) {
   const newDate = month + ` ` + year.toString();
   return (
     <div className="single-image-container">
-      <Image src={props.photoData.src} size={props.size} />
+      <Image src={`https://adventures-archive.s3.amazonaws.com/${props.photoData.src}`} size={props.size} />
       <div className="image-overlay">
         <div className="image-text">
           <div className="image-location">{props.photoData.location}</div>

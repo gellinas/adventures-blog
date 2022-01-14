@@ -5,12 +5,11 @@ import "./Navbar.scss";
 
 function Navbar(props) {
   const [navbarInput, setNavbarInput] = useState("");
-  const [sidebarVisible, setSidebarVisible] = useState(false);
+  // const [sidebarVisible, setSidebarVisible] = useState(false);
   const [activeItem, setActiveMenuItem] = useState("");
   const [menuVisible, setMenuVisible] = useState(false);
 
   const onSearchQuery = (event) => {
-    console.log(event.target.value);
     if (props.setSearchQuery) {
       props.setSearchQuery(event.target.value);
     }
